@@ -1,0 +1,108 @@
+:root {
+    --cor-fundoCor: rgb(226, 230, 35);
+    --cor-texto: rgb(51, 51, 51);
+    --cor-fundoPadrao: #fefefe;
+
+}
+*{
+    font-family: sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+.loginpage{
+    display: flex;
+    & .info{
+        width: 70vw;
+        background-color: lightblue;
+        height: 92vh;
+    }
+    & .login{
+        width: 30vw;
+        background-color: lightcoral;
+        height: 92vh;
+        form{
+            width: 100%;
+            justify-content: center;
+            border: 1px solid black;
+            margin-top: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            input{
+                height: 50px;
+                width: 250px; 
+            }
+            .partform{
+                display: flex;
+            }
+               
+        }
+    }
+}
+header{
+    /* background-color: var(--cor-fundoCor); */
+    background-color: #c90702; 
+    width: 100%;
+    height: 8vh;
+    color: white;
+}
+#switchColor:hover{
+    cursor: pointer;
+}
+header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+nav div{
+    border: 1px solid black;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    width: 100%;
+}
+.main-body{
+    display: flex;
+    width: 100%;
+    height: 800px;
+    border: 1px solid black;
+}
+.main-body .menu{
+    width: 20vw;
+    border-right: 1px solid black;
+    background-color: #95a100;
+}
+.main-body .menu .opt{
+    background-color: #d2d700;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin-top: 5px;
+    box-shadow: 1px 1px 3px 1px grey;
+}
+.main-body .menu .opt:hover{
+    cursor: pointer;
+    background-color: #fdff7e;
+}
+.main-body .content{
+    width: 80vw;
+    background-color: var(--cor-fundoPadrao);
+    & div {
+        color: var(--cor-texto);
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
