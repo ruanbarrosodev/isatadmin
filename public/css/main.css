@@ -10,40 +10,9 @@
     box-sizing: border-box;
     margin: 0;
 }
-.loginpage{
-    display: flex;
-    & .info{
-        width: 70vw;
-        background-color: lightblue;
-        height: 92vh;
-    }
-    & .login{
-        width: 30vw;
-        background-color: lightcoral;
-        height: 92vh;
-        form{
-            width: 100%;
-            justify-content: center;
-            border: 1px solid black;
-            margin-top: 200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
-            input{
-                height: 50px;
-                width: 250px; 
-            }
-            .partform{
-                display: flex;
-            }
-               
-        }
-    }
-}
 header{
     /* background-color: var(--cor-fundoCor); */
-    background-color: #c90702; 
+    background-color: #740602; 
     width: 100%;
     height: 8vh;
     color: white;
@@ -80,7 +49,7 @@ main{
     background-color: #95a100;
 }
 .main-body .menu .opt{
-    background-color: #d2d700;
+    background-color: #bcc900;
     width: 100%;
     text-align: center;
     display: flex;

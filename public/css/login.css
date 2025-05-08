@@ -1,0 +1,87 @@
+.loginpage{
+    display: flex;
+    position: relative;
+    z-index: 1;
+    & .info{
+        width: 70vw;
+        height: 92vh;
+    }
+    & .login{
+        width: 30vw;
+        background-color: lightcoral;
+        height: 92vh;
+    }
+}
+.loginpage img{
+    max-width: 300px;
+    margin: 0 auto;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.loginpage::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/header.jpg');
+    background-position-y: -250px;
+    opacity: 0.4; /* AQUI você controla a opacidade */
+    filter: brightness(0.5); /* Escurece a imagem : filter: brightness(0.5) contrast(1.2) blur(2px);   */
+    z-index: -1;
+}
+/* .div-com-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: black;  
+  opacity: 0.5;             
+  z-index: -1;
+} */
+.login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.login h4{
+    font-size: 2em;
+    color: rgba(32,32,32);
+    color: white;
+    text-shadow: 1px 1px 1px white;
+}
+.login img{
+    max-width: 300px;
+}
+.login form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;   
+}
+form .partForm{
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}
+.partForm input{
+    height: 40px;
+}
+@media screen and (max-width:800px){
+    .loginpage{
+        flex-wrap: wrap;
+        & .info{
+            width: 100%;
+        }
+        & .login{
+            width: 100%;
+        }
+    }
+    .loginpage img{
+        max-width: 200px;
+    }
+    .login img{
+        max-width: 200px;
+    }
+}
