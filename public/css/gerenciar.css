@@ -1,0 +1,55 @@
+.gerenciar{
+    width: 100%;
+    height: 400px;
+}
+.gerenciar h4{
+    text-align: center;
+}
+.formNewWorker{
+    padding: 10px;
+}
+.optNewWorker{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    & input{
+        height: 40px;
+        border: none;
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        font-size: 1.3em;
+    }
+}
+.formNewWorker select{
+    height: 40px;
+    width: 100%;
+    font-size: 1.3em;
+}
+.formNewWorker input[type=button]{
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    background-color: rgb(229, 238, 188);
+}
+.formNewWorker input[type=button]:hover{
+    background-color: rgb(214, 226, 159);
+    cursor: pointer;
+}
+.Worker {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+.Worker .optWorker{
+    width: 100%;
+    padding: 20px;
+    color: black;
+}
+.Worker:nth-child(even){
+    background-color: rgb(238, 237, 204);
+}
+
+.Worker:nth-child(odd){
+    background-color: rgb(220, 230, 179);
+}

@@ -59,13 +59,13 @@
     display: flex;
     flex-direction: column;   
 }
-form .partForm{
+.login form .partForm{
     display: flex; 
     flex-direction: column;
     width: 100%;
     padding: 10px;
 }
-.partForm input{
+.login .partForm input{
     height: 40px;
 }
 @media screen and (max-width:800px){

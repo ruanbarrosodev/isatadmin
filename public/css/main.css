@@ -37,6 +37,14 @@ nav div{
 main{
     width: 100%;
 }
+main .content{
+    width: 100%;
+}
+
+.tituloPage{
+    text-align: center;
+    padding: 20px;   
+}
 .main-body{
     display: flex;
     width: 100%;
@@ -66,12 +74,5 @@ main{
 .main-body .content{
     width: 80vw;
     background-color: var(--cor-fundoPadrao);
-    & div {
-        color: var(--cor-texto);
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-    }
 }
 
