@@ -6,6 +6,7 @@
     <title>ISAT </title>
     <link type="text/css" rel="stylesheet" href="../public/css/main.css">
     <link type="text/css" rel="stylesheet" href="../public/css/gerenciar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 <header> 
@@ -61,47 +62,80 @@
                     <div class="optWorker">Katiana Ferreira | Assistente Social</div>
                     <div class="optWorker">324.235.451-05</div>
                     <form class="formWorkerOpt">
+                        <div class="optWorker btnDeleteWorker" data-modal-id="1">Deletar Funcionário</div>
+                        <div class="optWorker btnChangePassword" data-modal-id="1">Resetar senha</div>
 
-                        <div class="optWorker">Deletar Funcionário</div>
-                        
-                        
-                        <div class="optWorker" id="modalReset" data-modal-id="1">Resetar senha</div>
-                        <div class="modal" data-modal-id="1">
-                            <div class="modalBody">
-                                 <p> Você deseja resetar a senha deste funcionário "name"?</p>
+                        <div class="modal modal-1">
+                            <div class="modalBody bodyDelete-1">
+                                 <p> Você deseja deletar este funcionário "name1"?</p>
+                                 <div class="buttonsFormWorker">
+                                    <button>SIM</button>
+                                    <button>CANCELAR</button>
+                                 </div>
+                            </div>
+                            <div class="modalBody bodyReset-1">
+                                 <p> Você deseja resetar a senha deste funcionário "name1"?</p>
                                  <div class="buttonsFormWorker">
                                     <button>SIM</button>
                                     <button>CANCELAR</button>
                                  </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
-                 <div class="Worker">
+                <div class="Worker">
                     <div class="optWorker">Katiana Ferreira | Assistente Social</div>
                     <div class="optWorker">324.235.451-05</div>
-                    <div class="optWorker">Deletar Funcionário</div>
-                    <div class="optWorker">Resetar senha</div>
+                    <form class="formWorkerOpt">
+                        <div class="optWorker btnDeleteWorker" data-modal-id="2">Deletar Funcionário</div>
+                        <div class="optWorker btnChangePassword" data-modal-id="2">Resetar senha</div>
+
+                        <div class="modal modal-2">
+                            <div class="modalBody bodyDelete-2">
+                                 <p> Você deseja deletar este funcionário "name2"?</p>
+                                 <div class="buttonsFormWorker">
+                                    <button>SIM</button>
+                                    <button>CANCELAR</button>
+                                 </div>
+                            </div>
+                            <div class="modalBody bodyReset-2">
+                                 <p> Você deseja resetar a senha deste funcionário "name2"?</p>
+                                 <div class="buttonsFormWorker">
+                                    <button>SIM</button>
+                                    <button>CANCELAR</button>
+                                 </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                 <div class="Worker">
+                <div class="Worker">
                     <div class="optWorker">Katiana Ferreira | Assistente Social</div>
                     <div class="optWorker">324.235.451-05</div>
-                    <div class="optWorker">Deletar Funcionário</div>
-                    <div class="optWorker">Resetar senha</div>
+                    <form class="formWorkerOpt">
+                        <div class="optWorker btnDeleteWorker" data-modal-id="3">Deletar Funcionário</div>
+                        <div class="optWorker btnChangePassword" data-modal-id="3">Resetar senha</div>
+
+                        <div class="modal modal-3">
+                            <div class="modalBody bodyDelete-3">
+                                 <p> Você deseja deletar este funcionário "name3"?</p>
+                                 <div class="buttonsFormWorker">
+                                    <button>SIM</button>
+                                    <button>CANCELAR</button>
+                                 </div>
+                            </div>
+                            <div class="modalBody bodyReset-3">
+                                 <p> Você deseja resetar a senha deste funcionário "name3"?</p>
+                                 <div class="buttonsFormWorker">
+                                    <button>SIM</button>
+                                    <button>CANCELAR</button>
+                                 </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                 <div class="Worker">
-                    <div class="optWorker">Katiana Ferreira | Assistente Social</div>
-                    <div class="optWorker">324.235.451-05</div>
-                    <div class="optWorker">Deletar Funcionário</div>
-                    <div class="optWorker">Resetar senha</div>
-                </div>
-                 <div class="Worker">
-                    <div class="optWorker">Katiana Ferreira | Assistente Social</div>
-                    <div class="optWorker">324.235.451-05</div>
-                    <div class="optWorker">Deletar Funcionário</div>
-                    <div class="optWorker">Resetar senha</div>
-                </div>
+                
+
+
             </div>
         </div>
     </section>
