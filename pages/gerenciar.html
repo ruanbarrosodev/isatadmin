@@ -60,8 +60,23 @@
                 <div class="Worker">
                     <div class="optWorker">Katiana Ferreira | Assistente Social</div>
                     <div class="optWorker">324.235.451-05</div>
-                    <div class="optWorker">Deletar Funcionário</div>
-                    <div class="optWorker">Resetar senha</div>
+                    <form class="formWorkerOpt">
+
+                        <div class="optWorker">Deletar Funcionário</div>
+                        
+                        
+                        <div class="optWorker" id="modalReset" data-modal-id="1">Resetar senha</div>
+                        <div class="modal" data-modal-id="1">
+                            <div class="modalBody">
+                                 <p> Você deseja resetar a senha deste funcionário "name"?</p>
+                                 <div class="buttonsFormWorker">
+                                    <button>SIM</button>
+                                    <button>CANCELAR</button>
+                                 </div>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
                  <div class="Worker">
                     <div class="optWorker">Katiana Ferreira | Assistente Social</div>
@@ -93,4 +108,5 @@
 </main>
 </body>
 <script src="public/js/main.js"></script>
+<script src="../public/js/gerenciar.js"></script>
 </html>

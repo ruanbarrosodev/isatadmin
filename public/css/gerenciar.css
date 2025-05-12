@@ -20,6 +20,9 @@
         font-size: 1.3em;
     }
 }
+.formWorkerOpt{
+    display: flex;
+}
 .formNewWorker select{
     height: 40px;
     width: 100%;
