@@ -17,6 +17,10 @@ header{
     height: 8vh;
     color: white;
 }
+h4{
+    text-align: center;
+    margin-bottom: 30px;
+}
 .modal{
     position: absolute;
     top: 0;
