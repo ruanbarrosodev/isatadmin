@@ -1,3 +1,9 @@
+<?php 
+    require_once "config/connection.php";
+    require_once "config/bootstrap.php";
+
+    
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
