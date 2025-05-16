@@ -1,6 +1,9 @@
 RewriteEngine On
 RewriteBase /isatadmin/
+
+# Ignora arquivos e diretórios reais
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [QSA,L]
 
+# Redireciona tudo para index.php
+RewriteRule ^ index.php [QSA,L]

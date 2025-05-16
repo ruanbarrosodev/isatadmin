@@ -1,12 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISAT </title>
-    <link type="text/css" rel="stylesheet" href="../public/css/main.css">
-    <link type="text/css" rel="stylesheet" href="../public/css/gerenciar.css">
+    <link type="text/css" rel="stylesheet" href="/isatadmin/public/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/isatadmin/public/css/gerenciar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <?php 
+    require_once __DIR__ . '/../utils/menu.php';
+    require_once __DIR__ . '/../config/bootstrap.php';
+
+    ?>
 </head>
 <body>
 <header> 
@@ -19,18 +25,12 @@
     </nav>
 </header>
 <main>
+
+    
     <section class="main-body">
-        <div class="menu">
-            <div class="opt"><a href="novoatendimento.html">Novo atendimento</a></div>
-            <div class="opt"><a href="novopaciente.html">Novo paciente</a></div>
-            <div class="opt"><a href="listaratendimentos.html">Listar atendimentos</a></div>
-            <div class="opt"><a href="listarpacientes.html">Listar pacientes</a></div>
-            <div class="opt"><a href="editarpaciente.html">Editar paciente</a></div>
-            <div class="opt"><a href="filtragem.html">Filtragem</a></div>
-            <div class="opt"><a href="feedbacks.html">Feedbacks</a></div>
-            <div class="opt"><a href="#">Gerenciar</a></div>           
-           <a href="../index.html">VOLTAR LOGIN</a>
-        </div>
+        <?php 
+            renderMenu($menuItems, $currentUri);
+        ?>
         <div class="content">
             <h2 class="tituloPage">Painel Funcionários</h2>
             <div class="gerenciar">
