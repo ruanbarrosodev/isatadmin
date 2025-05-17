@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISAT </title>
-    <link type="text/css" rel="stylesheet" href="/isatadmin/public/css/main.css">
-    <link type="text/css" rel="stylesheet" href="/isatadmin/public/css/gerenciar.css">
+    <link type="text/css" rel="stylesheet" href="/public/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/public/css/gerenciar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <?php 
     require_once __DIR__ . '/../utils/menu.php';

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISAT </title>
-    <link type="text/css" rel="stylesheet" href="/isatadmin/public/css/main.css">
-    <link type="text/css" rel="stylesheet" href="/isatadmin/public/css/feedbacks.css">
+    <link type="text/css" rel="stylesheet" href="/public/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/public/css/feedbacks.css">
     <?php 
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../config/bootstrap.php';
