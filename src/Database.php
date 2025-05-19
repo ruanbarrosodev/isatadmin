@@ -6,35 +6,49 @@ use PDOException;
 
 class Database
 {
-    private static ?Database $instance = null;
+    private static ?Database $db1Instance = null;
+    private static ?Database $db2Instance = null;
+
     private ?PDO $connection = null;
 
-    private function __construct()
+    private function __construct(string $dbIdentifier)
     {
-        $host = $_ENV['DB1_HOST'] ?? getenv('DB1_HOST');
-        $user = $_ENV['DB1_USER'] ?? getenv('DB1_USER');
-        $pass = $_ENV['DB1_PASS'] ?? getenv('DB1_PASS');
-        $dbname = $_ENV['DB1_NAME'] ?? getenv('DB1_NAME');
+        $host = $_ENV["{$dbIdentifier}_HOST"] ?? getenv("{$dbIdentifier}_HOST");
+        $user = $_ENV["{$dbIdentifier}_USER"] ?? getenv("{$dbIdentifier}_USER");
+        $pass = $_ENV["{$dbIdentifier}_PASS"] ?? getenv("{$dbIdentifier}_PASS");
+        $dbname = $_ENV["{$dbIdentifier}_NAME"] ?? getenv("{$dbIdentifier}_NAME");
+        $charset = $_ENV["{$dbIdentifier}_CHARSET"] ?? 'utf8';
 
         try {
             $this->connection = new PDO(
-                "mysql:host=$host;dbname=$dbname;charset=utf8",
+                "mysql:host=$host;dbname=$dbname;charset=$charset",
                 $user,
                 $pass
             );
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Erro na conexão: " . $e->getMessage();
+            echo "Erro na conexão com {$dbIdentifier}: " . $e->getMessage();
             exit;
         }
     }
 
-    public static function getInstance(): Database
+    public static function getInstance(string $db = 'DB1'): Database
     {
-        if (self::$instance === null) {
-            self::$instance = new Database();
+        if ($db === 'DB1') {
+            if (self::$db1Instance === null) {
+                self::$db1Instance = new Database('DB1');
+            }
+            return self::$db1Instance;
         }
-        return self::$instance;
+
+        if ($db === 'DB2') {
+            if (self::$db2Instance === null) {
+                self::$db2Instance = new Database('DB2');
+            }
+            return self::$db2Instance;
+        }
+
+        throw new \InvalidArgumentException("Banco inválido: use 'DB1' ou 'DB2'");
     }
 
     public function getConnection(): ?PDO
@@ -42,9 +56,9 @@ class Database
         return $this->connection;
     }
 
-    private function __clone() { }
-    public function __wakeup() {
+    private function __clone() {}
+    public function __wakeup()
+    {
         throw new \Exception("Cannot unserialize singleton");
     }
-
 }

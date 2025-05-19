@@ -9,12 +9,13 @@
     <?php 
      require_once __DIR__ . '/../utils/menu.php';
      require_once __DIR__ . '/../config/bootstrap.php';
-     require_once __DIR__ . '/../models/FeedbackModel.php';
+     require_once __DIR__ . '/../controllers/FeedbackController.php';
 
-   
-    $pdo = \Isatadmin\Database::getInstance()->getConnection();
-    $model = new FeedbackModel($pdo);
-     $feedbacks = $model->getAll();
+    $controller = new FeedbackController('DB2');
+    $feedbacks = $controller->index();
+
+
+    
 
     ?>
 </head>
