@@ -18,14 +18,35 @@ header{
     color: black;
     text-shadow: 1px 1px 1px grey;
 }
+header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+nav a,
+nav div,
+nav button {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    border-right: 1px solid black;
+}
 h4{
     text-align: center;
     margin-bottom: 30px;
 }
 .menu .opt a.active {
     font-weight: bold;
-    color: #007BFF; /* destaque azul, por exemplo */
-    pointer-events: none; /* desabilita click no link ativo */
+    color: #007BFF; 
+    pointer-events: none; 
 }
 .menu .opt a{
     color: black;
@@ -42,6 +63,7 @@ h4{
     align-items: center;
     display: none;
 }
+
 .modalBody{
     width: 400px;
     background-color: gainsboro;
@@ -59,27 +81,10 @@ h4{
 #switchColor:hover{
     cursor: pointer;
 }
-header nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-nav div{
-    border: 1px solid black;
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
+
 main{
     width: 100%;
 }
-main .content{
-    width: 100%;
-}
-
 .tituloPage{
     text-align: center;
     padding: 20px;   
@@ -87,10 +92,12 @@ main .content{
 .main-body{
     display: flex;
     width: 100%;
-    height: 800px;
-    border: 1px solid black;
+}
+.main-body .content{
+   /*  margin-left: 20vw;    */
 }
 .main-body .menu{
+    min-height: 92vh;
     width: 20vw;
     border-right: 1px solid black;
     background-color: #FFD8D8;

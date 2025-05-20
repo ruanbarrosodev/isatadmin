@@ -9,72 +9,187 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    & input{
-        height: 40px;
-        border: none;
-        border-bottom: 1px solid black;
-        border-left: 1px solid black;
-        font-size: 1.3em;
-    }
 }
-/*
-    $('.btnDelete').on('click', function(){
-        var modalId = $(this).data('modal-id');
-        $('.myModal-' + modalId).css('display', 'flex');
-    });
-
-    $('.myModal').on('click', function(e){
-    if(e.target==this){
-        $('.myModal').css("display", "none");
-    }
-    $('.btnCancel').on('click', function(){
-        $('.myModal').css("display", "none");
-    });
-
-      $('input[name="profilepic"]').on('change', function(e) {
-        // Obtém o caminho do arquivo selecionado
-        var imagePath = URL.createObjectURL(e.target.files[0]);
-
-        // Exibe a visualização da imagem no photo-container
-        $('.photo-container img').attr('src', imagePath);
-    });
-    data-modal-id="<?=$row->id?>"
-});
-*/
-
-.formWorkerOpt{
+.optNewWorker {
     display: flex;
+    flex-direction: column;
+    margin-top: 15px;
 }
-.formNewWorker select{
-    height: 40px;
+.optNewWorker label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+.optNewWorker input[type="text"],
+.formNewWorker select {
+    height: 45px;
     width: 100%;
-    font-size: 1.3em;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
-.formNewWorker input[type=button]{
-    font-size: 1em;
+
+.optNewWorker input[type="text"]:focus,
+.formNewWorker select:focus {
+    border-color: #6a8eae;
+    box-shadow: 0 0 0 3px rgba(106, 142, 174, 0.2);
+    background-color: #fff;
+}
+
+.formNewWorker select {
+    margin-top: 15px;
+}
+
+.formNewWorker input[type="button"] {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 1.1em;
     text-transform: uppercase;
     font-weight: bold;
     border: none;
-    background-color: rgb(229, 238, 188);
+    border-radius: 8px;
+    background-color: #6a8eae;
+    color: white;
+    transition: background-color 0.2s, transform 0.2s;
 }
-.formNewWorker input[type=button]:hover{
-    background-color: rgb(214, 226, 159);
+.formNewWorker input[type="button"]:hover {
+    background-color: #557f97;
     cursor: pointer;
+    transform: scale(1.02);
 }
+
+/* Tab 2 */
+/* TABELA (visual estilo linha) AJUSTADO */
 .Worker {
     display: flex;
     justify-content: space-between;
-    padding: 5px;
-}
-.Worker .optWorker{
-    width: 100%;
-    padding: 20px;
-    color: black;
-}
-.Worker:nth-child(even){
-    background-color: rgb(238, 237, 204);
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ccc;
+    gap: 10px;
 }
 
-.Worker:nth-child(odd){
-    background-color: rgb(220, 230, 179);
+/* Alternância de cor */
+.Worker:nth-child(even) {
+    background-color: #f1f5f9; 
 }
+.Worker:nth-child(odd) {
+    background-color: #e2e8f0; 
+}
+
+
+/* Cada célula da linha (texto ou campo) */
+.Worker .optWorker {
+    flex: 1;
+    padding: 5px 10px;
+    font-size: 1em;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Inputs dentro da linha (compactos, retinhos) */
+.Worker input[type="text"] {
+    height: 30px;
+    font-size: 1em;
+    padding: 4px 6px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%;
+}
+
+/* Botões de ação dentro da linha */
+.Worker input[type="button"],
+.Worker button {
+    padding: 6px 12px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 6px;
+    background-color: #6a8eae;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.Worker input[type="button"]:hover,
+.Worker button:hover {
+    background-color: #557f97;
+}
+/* Estilo base dos botões em div */
+.formWorkerOpt .btnDeleteWorker,
+.formWorkerOpt .btnChangePassword {
+    padding: 8px 14px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    user-select: none;
+}
+
+/* Botão Deletar - tom vermelho suave */
+.formWorkerOpt .btnDeleteWorker {
+    background-color: #d88c8c;
+}
+.formWorkerOpt .btnDeleteWorker:hover {
+    background-color: #c67171;
+    transform: scale(1.03);
+}
+
+/* Botão Resetar - tom âmbar claro */
+.formWorkerOpt .btnChangePassword {
+    background-color: #e6b877;
+}
+.formWorkerOpt .btnChangePassword:hover {
+    background-color: #d5a961;
+    transform: scale(1.03);
+}
+
+
+
+  /* Tabs CSS*/
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* Botões das guias */
+  .tab-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    background: #ddd;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+  }
+
+  /* Botão ativo */
+  .tab-btn.active {
+    background: #fff;
+    font-weight: bold;
+    border-color: #888;
+  }
+
+  /* Conteúdo das guias */
+  .tab-content {
+    padding: 15px;
+    display: none;
+    border-radius: 0 5px 5px 5px;
+    background: #fff;
+  }
+
+  /* Conteúdo ativo */
+  .tab-content.active {
+    display: block;
+  }
+  
