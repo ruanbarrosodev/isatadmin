@@ -44,7 +44,7 @@
     margin-top: 15px;
 }
 
-.formNewWorker input[type="button"] {
+.formNewWorker input[type="submit"] {
     margin-top: 20px;
     padding: 12px;
     font-size: 1.1em;
@@ -56,7 +56,7 @@
     color: white;
     transition: background-color 0.2s, transform 0.2s;
 }
-.formNewWorker input[type="button"]:hover {
+.formNewWorker input[type="submit"]:hover {
     background-color: #557f97;
     cursor: pointer;
     transform: scale(1.02);

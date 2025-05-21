@@ -30,8 +30,24 @@ $(document).ready(function () {
 
     // Adiciona ativo no botão clicado e no conteúdo correspondente
     $(this).addClass('active');
-    $('.tab-content[data-tab="' + tabId + '"]').addClass('active');
-  });
+        $('.tab-content[data-tab="' + tabId + '"]').addClass('active');
+    });
+     $('input[name="cpf"]').on('input', function() {
+        let cpf = $(this).val();
+
+        cpf = cpf.replace(/\D/g, '');
+
+        cpf = cpf.substring(0, 11);
+
+        cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+        cpf = cpf.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+        cpf = cpf.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+
+        $(this).val(cpf);
+    });
+
+
+
 })
 
 /*

@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['worker'])) {
+    header('Location: /'); 
+    exit;
+}
+?>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +20,7 @@
      require_once __DIR__ . '/../controllers/FeedbackController.php';
 
     $controller = new FeedbackController('DB2');
-    $feedbacks = $controller->index();
+    $feedbacks = $controller->listFeedback();
 
 
     

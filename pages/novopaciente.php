@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['worker'])) {
+    header('Location: /'); 
+    exit;
+}
+?>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
