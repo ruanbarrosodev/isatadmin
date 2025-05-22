@@ -21,24 +21,26 @@ if (!isset($_SESSION['worker'])) {
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../utils/nav.php';
     require_once __DIR__ . '/../controllers/WorkerController.php';
+    require_once __DIR__ . '/../controllers/GenericController.php';
     $controller = new WorkerController();
     $workers = $controller->listWorker();
     $response = null; 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         if (isset($_POST['form_type'])) {
             switch ($_POST['form_type']) {
-                    case 'signUpWorker':     
-                        $controller = new WorkerController();
-                        $response = $controller->register($_POST);
+                case 'signUpWorker':     
+                    $controller = new WorkerController();
+                    $response = $controller->register($_POST);
+                break;
+                case 'form2':
+                    $controller2 = new Controller2();
+                    $response2 = $controller2->handle($_POST);
                     break;
-                    case 'form2':
-                        $controller2 = new Controller2();
-                        $response2 = $controller2->handle($_POST);
-                        break;
-                }
             }
         }
-
+    }
+    $controller = new GenericController();
+    $projects = $controller->listProject();
     ?>
 </head>
 <body>
@@ -81,7 +83,7 @@ if (!isset($_SESSION['worker'])) {
                                 <input type="text">
                             </div> -->
                             <div class="optNewWorker">
-                                <label>Posição</label>
+                                <label>Cargos</label>
                                 <select class="optNewWorker" name="position" required>
                                     <option value="">Selecione</option>
                                     <option value="Assistente Social">Assistente Social</option>
@@ -90,21 +92,14 @@ if (!isset($_SESSION['worker'])) {
                                 </select>
                             </div>
                             <div class="optNewWorker">
-                                <label>Tempo</label>
-                                <select class="optNewWorker" name="projectTime" required>
-                                    <option value="">Selecione</option>
-                                    <option value="1 ano">1 ano</option>
-                                    <option value="6 meses">6 meses</option>
-                                    <option value="2 anos">2 anos</option>
-                                </select>
-                            </div>
-                            <div class="optNewWorker">
                                 <label>Projeto</label>
-                                <select class="optNewWorker" name="projectName" required>
+                                <select class="optNewWorker" name="idProject" required>
                                     <option value="">Selecione</option>
-                                    <option value="Projeto 1">Projeto 1</option>
-                                    <option value="Projeto 2">Projeto 2</option>
-                                    <option value="Projeto 3">Projeto 3</option>
+                                    <?php if(!empty($projects)): ?>
+                                        <?php foreach($projects as $project): ?>      
+                                            <option value="<?=$project['idProject']?>"><?=$project['projectName']?></option>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                             <div class="optNewWorker">
@@ -120,9 +115,11 @@ if (!isset($_SESSION['worker'])) {
                                 <label>Projeto</label>
                                 <select class="optNewWorker" name="projectName" required>
                                     <option value="">Selecione</option>
-                                    <option value="Projeto 1">Projeto 1</option>
-                                    <option value="Projeto 2">Projeto 2</option>
-                                    <option value="Projeto 3">Projeto 3</option>
+                                        <?php if(!empty($projects)): ?>
+                                            <?php foreach($projects as $project): ?>      
+                                                <option value="<?=$project['idProject']?>"><?=$project['projectName']?></option>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
                                 </select>
                             </div>
                             <!-- <div class="optNewWorker">
@@ -134,6 +131,7 @@ if (!isset($_SESSION['worker'])) {
                                 <div class="Worker">
                                     <div class="optWorker"><?php echo htmlspecialchars($worker['name']); ?> | <?php echo htmlspecialchars($worker['position']); ?></div>
                                     <div class="optWorker"><?php echo htmlspecialchars($worker['cpf']); ?></div>
+                                    <div class="optWorker"><?php echo htmlspecialchars($worker['projectName']) ?> | <?php echo htmlspecialchars($worker['projectTime']) ?></div>
                                     <form class="formWorkerOpt">
                                         <div class="optWorker btnDeleteWorker" data-modal-id="<?php echo $worker['idWorker']; ?>">Deletar Funcionário</div>
                                         <div class="optWorker btnChangePassword" data-modal-id="<?php echo $worker['idWorker']; ?>">Resetar senha</div>
@@ -159,15 +157,65 @@ if (!isset($_SESSION['worker'])) {
                             <?php endforeach; ?>
                         <?php endif; ?>
                 </div>
-                <div class="tab-content" data-tab="3">
-                    <h3>Projetos</h3>
-                    <p>Lista</p>
-                </div> 
+            <div class="tab-content" data-tab="3">
+                <h3>Projetos</h3>
+                <div class="cards-container">
+                    <!-- Card Projetos -->
+                    <div class="card">
+                        <h4>Projetos</h4>
+                        <form class="form-add">
+                            <input type="text" name="projectName" placeholder="Novo Projeto">
+                            <select class="optNewWorker" name="projectTime" required>
+                                <option value="">Selecione</option>
+                                <option>3 meses</option>
+                                <option>6 meses</option>
+                                <option>1 ano</option>
+                                <option>2 anos</option>
+                            </select>
+                            <button type="submit">Adicionar</button>
+                        </form>
+                        <div class="list">
+                            <?php if(!empty($projects)): ?>
+                                <?php foreach($projects as $project): ?>    
+                                        <div class="item">
+                                            <span><?=$project['projectName']?> - <?=$project['projectTime']?></span>
+                                            <form method="post" action="" class="form-delete">
+                                                <input type="hidden" value="<?=$project['idProject']?>">
+                                                <button type="submit">Deletar</button>
+                                            </form>
+                                        </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    </div>
 
+                    <!-- Card Cargos -->
+                    <div class="card">
+                        <h4>Cargos</h4>
+                        <form class="form-add">
+                            <input type="text" name="positionName" placeholder="Novo Cargo" required>
+                            <button type="submit">Adicionar</button>
+                        </form>
+                        <div class="list">
+                            <div class="item">
+                                <span>Gerente</span>
+                                <form class="form-delete">
+                                    <button type="submit">Deletar</button>
+                                </form>
+                            </div>
+                            <div class="item">
+                                <span>Assistente</span>
+                                <form class="form-delete">
+                                    <button type="submit">Deletar</button>
+                                </form>
+                            </div>
+                            <!-- + Outras repetições -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-
-
-            
+  
         </div>
     </section>
 </main>

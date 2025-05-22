@@ -9,18 +9,18 @@ class WorkerModel
         $this->pdo = $pdo;
     }
 
-    public function create(string $name, string $cpf, string $position, string $passwordHash, int $idProject): bool
+    public function create(string $name, string $cpf, string $passwordHash, int $idProject, int $idPosition): bool
     {
-        $sql = "INSERT INTO Worker (name, cpf, position, password, idProject) 
-                VALUES (:name, :cpf, :position, :password, :idProject)";
+        $sql = "INSERT INTO Worker (name, cpf, password, Project_idProject, Position_idPosition) 
+                VALUES (:name, :cpf, :password, :idProject, :idPosition)";
         $stmt = $this->pdo->prepare($sql);
 
         return $stmt->execute([
             ':name' => $name,
             ':cpf' => $cpf,
-            ':position' => $position,
             ':password' => $passwordHash,
-            ':idProject' => $idProject
+            ':idProject' => $idProject,
+            ':idPosition' => $idPosition
         ]);
     }
 
@@ -33,10 +33,19 @@ class WorkerModel
 
         return $user ?: null;
     }
+
     public function getAll(): array
     {
-        $stmt = $this->pdo->query("SELECT idWorker, name, cpf, position FROM Worker");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+        $sql = "SELECT w.idWorker, w.name, w.cpf, pos.namePosition AS position, 
+                       p.nameProject, p.timeProject
+                FROM Worker w
+                JOIN Project p ON w.Project_idProject = p.idProject
+                JOIN Position pos ON w.Position_idPosition = pos.idPosition
+                WHERE w.name != 'Dev' AND w.name != 'Admin'
+                ORDER BY w.idWorker DESC
+                LIMIT 5";
 
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
