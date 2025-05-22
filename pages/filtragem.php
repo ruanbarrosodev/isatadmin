@@ -1,11 +1,11 @@
-<!DOCTYPE html>
 <?php
-session_start();
-if (!isset($_SESSION['worker'])) {
-    header('Location: /'); 
-    exit;
-}
+    session_start();
+    if (!isset($_SESSION['name'])) {
+        header('Location: /'); 
+        exit;
+    }
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">

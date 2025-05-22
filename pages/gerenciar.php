@@ -1,13 +1,12 @@
-
-<!DOCTYPE html>
 <?php
-session_start();
-$_SESSION['worker'] = 'Ruan';
-if (!isset($_SESSION['worker'])) {
-    header('Location: /'); 
-    exit;
-}
+    session_start();
+    $_SESSION['name'] = 'Ruan';
+    if (!isset($_SESSION['name'])) {
+        header('Location: /'); 
+        exit;
+    }
 ?>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -58,7 +57,7 @@ if (!isset($_SESSION['worker'])) {
                 <div class="tabs">
                     <div class="tab-btn active" data-tab="1">Novo Funcionário</div>
                     <div class="tab-btn" data-tab="2">Funcionários</div>
-                    <div class="tab-btn" data-tab="3">Projetos</div>
+                    <div class="tab-btn" data-tab="3">Projetos/Cargos</div>
                 </div>
                 <div class="tab-content active" data-tab="1">
                     <h3>Novo Funcionário</h3>
@@ -159,7 +158,7 @@ if (!isset($_SESSION['worker'])) {
                         <?php endif; ?>
                 </div>
             <div class="tab-content" data-tab="3">
-                <h3>Projetos</h3>
+                <h3>Administração</h3>
                 <div class="cards-container">
                     <!-- Card Projetos -->
                     <div class="card">

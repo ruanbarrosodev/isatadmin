@@ -23,6 +23,7 @@ class WorkerController
         if($cpf=='dev'){
             $cpf = '032.912.702-07';
         }
+        $idJobPosition = '3';
         if (!$name || !$cpf || !$idJobPosition || !$password || !$idProject) {
             return ['success' => false, 'message' => 'Todos os campos são obrigatórios.'];
         }
