@@ -12,7 +12,7 @@ class GenericModel
 
     public function getAllProjects(): array
     {
-        $stmt = $this->pdo->query("SELECT idProject, projectName, projectTime FROM Project where projectName!='Projeto Dev' and projectName!='Projeto Admin'");
+        $stmt = $this->pdo->query("SELECT idProject, nameProject, timeProject FROM Project where nameProject!='Projeto Dev' and nameProject!='Projeto Admin'");
         return $stmt->fetchAll();
     }
 }

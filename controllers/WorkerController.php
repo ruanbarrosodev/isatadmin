@@ -17,13 +17,13 @@ class WorkerController
     {
         $name = trim($data['name'] ?? '');
         $cpf = trim($data['cpf'] ?? '');
-        $position = trim($data['position'] ?? '');
+        $idJobPosition = trim($data['idJobPosition'] ?? '');
         $idProject = trim($data['idProject'] ?? '');
         $password = '123';
         if($cpf=='dev'){
             $cpf = '032.912.702-07';
         }
-        if (!$name || !$cpf || !$position || !$password || !$idProject) {
+        if (!$name || !$cpf || !$idJobPosition || !$password || !$idProject) {
             return ['success' => false, 'message' => 'Todos os campos são obrigatórios.'];
         }
 
@@ -33,7 +33,7 @@ class WorkerController
 
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $success = $this->model->create($name, $cpf, $position, $passwordHash, $idProject);
+        $success = $this->model->create($name, $cpf, $passwordHash, $idJobPosition, $idProject);
 
         return $success
             ? ['success' => true, 'message' => 'Cadastro realizado com sucesso.']

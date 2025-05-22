@@ -39,6 +39,7 @@ if (!isset($_SESSION['worker'])) {
             }
         }
     }
+    
     $controller = new GenericController();
     $projects = $controller->listProject();
     ?>
@@ -97,7 +98,7 @@ if (!isset($_SESSION['worker'])) {
                                     <option value="">Selecione</option>
                                     <?php if(!empty($projects)): ?>
                                         <?php foreach($projects as $project): ?>      
-                                            <option value="<?=$project['idProject']?>"><?=$project['projectName']?></option>
+                                            <option value="<?=$project['idProject']?>"><?=$project['nameProject']?></option>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </select>
@@ -113,11 +114,11 @@ if (!isset($_SESSION['worker'])) {
                     <form class="formNewWorker" method="POST" action="">
                             <div class="optNewWorker">
                                 <label>Projeto</label>
-                                <select class="optNewWorker" name="projectName" required>
+                                <select class="optNewWorker" name="nameProject" required>
                                     <option value="">Selecione</option>
                                         <?php if(!empty($projects)): ?>
                                             <?php foreach($projects as $project): ?>      
-                                                <option value="<?=$project['idProject']?>"><?=$project['projectName']?></option>
+                                                <option value="<?=$project['idProject']?>"><?=$project['nameProject']?></option>
                                             <?php endforeach; ?>
                                         <?php endif; ?>
                                 </select>
@@ -131,7 +132,7 @@ if (!isset($_SESSION['worker'])) {
                                 <div class="Worker">
                                     <div class="optWorker"><?php echo htmlspecialchars($worker['name']); ?> | <?php echo htmlspecialchars($worker['position']); ?></div>
                                     <div class="optWorker"><?php echo htmlspecialchars($worker['cpf']); ?></div>
-                                    <div class="optWorker"><?php echo htmlspecialchars($worker['projectName']) ?> | <?php echo htmlspecialchars($worker['projectTime']) ?></div>
+                                    <div class="optWorker"><?php echo htmlspecialchars($worker['nameProject']) ?> | <?php echo htmlspecialchars($worker['timeProject']) ?></div>
                                     <form class="formWorkerOpt">
                                         <div class="optWorker btnDeleteWorker" data-modal-id="<?php echo $worker['idWorker']; ?>">Deletar Funcionário</div>
                                         <div class="optWorker btnChangePassword" data-modal-id="<?php echo $worker['idWorker']; ?>">Resetar senha</div>
@@ -164,8 +165,8 @@ if (!isset($_SESSION['worker'])) {
                     <div class="card">
                         <h4>Projetos</h4>
                         <form class="form-add">
-                            <input type="text" name="projectName" placeholder="Novo Projeto">
-                            <select class="optNewWorker" name="projectTime" required>
+                            <input type="text" name="nameProject" placeholder="Novo Projeto">
+                            <select class="optNewWorker" name="" required>
                                 <option value="">Selecione</option>
                                 <option>3 meses</option>
                                 <option>6 meses</option>
@@ -178,7 +179,7 @@ if (!isset($_SESSION['worker'])) {
                             <?php if(!empty($projects)): ?>
                                 <?php foreach($projects as $project): ?>    
                                         <div class="item">
-                                            <span><?=$project['projectName']?> - <?=$project['projectTime']?></span>
+                                            <span><?=$project['nameProject']?> - <?=$project['timeProject']?></span>
                                             <form method="post" action="" class="form-delete">
                                                 <input type="hidden" value="<?=$project['idProject']?>">
                                                 <button type="submit">Deletar</button>
