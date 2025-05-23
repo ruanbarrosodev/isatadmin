@@ -37,7 +37,7 @@
                     break;
             }
         }
-    }
+    } 
     
     $controller = new GenericController();
     $projects = $controller->listProject();
@@ -126,7 +126,7 @@
                                 <input type="submit" value="Pesquisar">
                             </div> -->
                         </form>
-                        <?php if (!empty($workers)): ?>
+                        <?php /*if (!empty($workers)): ?>
                             <?php foreach ($workers as $worker): ?>
                                 <div class="Worker">
                                     <div class="optWorker"><?php echo htmlspecialchars($worker['name']); ?> | <?php echo htmlspecialchars($worker['position']); ?></div>
@@ -155,7 +155,7 @@
                                     </form>
                                 </div>
                             <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php endif;*/ ?>
                 </div>
             <div class="tab-content" data-tab="3">
                 <h3>Administração</h3>
@@ -163,9 +163,10 @@
                     <!-- Card Projetos -->
                     <div class="card">
                         <h4>Projetos</h4>
-                        <form class="form-add">
+                        <form class="form-add form-add-project">
+                            <input type="hidden" name="form_type" value="addProject">
                             <input type="text" name="nameProject" placeholder="Novo Projeto">
-                            <select class="optNewWorker" name="" required>
+                            <select class="optNewWorker" name="timeProject" required>
                                 <option value="">Selecione</option>
                                 <option>3 meses</option>
                                 <option>6 meses</option>
@@ -174,46 +175,21 @@
                             </select>
                             <button type="submit">Adicionar</button>
                         </form>
-                        <div class="list">
-                            <?php if(!empty($projects)): ?>
-                                <?php foreach($projects as $project): ?>    
-                                        <div class="item">
-                                            <span><?=$project['nameProject']?> - <?=$project['timeProject']?></span>
-                                            <form method="post" action="" class="form-delete">
-                                                <input type="hidden" value="<?=$project['idProject']?>">
-                                                <button type="submit">Deletar</button>
-                                            </form>
-                                        </div>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                        <div class="list list-projects">
+                            <!-- Lista de projetos vem aqui -->
                         </div>
                     </div>
-
-                    <!-- Card Cargos -->
                     <div class="card">
                         <h4>Cargos</h4>
-                        <form class="form-add">
+                        <form class="form-add form-add-position">
+                            <input type="hidden" name="form_type" value="addPosition">
                             <input type="text" name="positionName" placeholder="Novo Cargo" required>
                             <button type="submit">Adicionar</button>
                         </form>
-                        <div class="list">
-                            <div class="item">
-                                <span>Gerente</span>
-                                <form class="form-delete">
-                                    <button type="submit">Deletar</button>
-                                </form>
-                            </div>
-                            <div class="item">
-                                <span>Assistente</span>
-                                <form class="form-delete">
-                                    <button type="submit">Deletar</button>
-                                </form>
-                            </div>
-                            <!-- + Outras repetições -->
+                        <div class="list list-positions">
+                            <!-- Lista de cargos vem aqui -->
                         </div>
-                    </div>
                 </div>
-            </div>
 
   
         </div>
