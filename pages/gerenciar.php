@@ -21,8 +21,6 @@
     require_once __DIR__ . '/../utils/nav.php';
     require_once __DIR__ . '/../controllers/WorkerController.php';
     require_once __DIR__ . '/../controllers/GenericController.php';
-    $controller = new WorkerController();
-    $workers = $controller->listWorker();
     $response = null; 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         if (isset($_POST['form_type'])) {
@@ -37,10 +35,13 @@
                     break;
             }
         }
-    } 
-    
-    $controller = new GenericController();
-    $projects = $controller->listProject();
+    }   
+    $controller = new WorkerController();
+    $workers = $controller->listWorker();
+
+    $controller = new GenericController(); 
+    $response = $controller->listProject();
+    $projects = $response['data'] ?? []; 
     ?>
 </head>
 <body>
