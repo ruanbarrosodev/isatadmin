@@ -1,3 +1,32 @@
+<?php
+session_start();
+
+require_once __DIR__ . '/config/bootstrap.php';
+require_once __DIR__ . '/controllers/WorkerController.php';
+
+if (isset($_SESSION['name'])) {
+    header('Location: /home');
+    exit;
+}
+$response = null;
+$controllerWorker = new WorkerController();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+    if (isset($_POST['form_type']) && $_POST['form_type'] === 'login') {
+        $cpf = trim($_POST['cpf'] ?? '');
+        $password = $_POST['password'] ?? '';
+
+        $response = $controllerWorker->authenticate($cpf, $password);
+
+        if ($response['success']) {
+            $_SESSION['name'] = $response['user']['name'];
+
+            header('Location: /home');
+            exit;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,6 +55,11 @@
         <div class="login">
             <h4>Entre no ISAT ADM</h4>
             <img src="public/img/logo.png" alt="logoisat">
+            <?php if (!empty($response) && !$response['success']): ?>
+                <div class="error-message" style="color:red; margin-bottom:1rem;">
+                    <?= htmlspecialchars($response['message']) ?>
+                </div>
+            <?php endif; ?>
             <form> 
                 <div class="partForm">
                     <label>CPF: </label>

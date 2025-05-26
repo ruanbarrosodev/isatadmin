@@ -1,6 +1,12 @@
 <?php 
     require_once __DIR__ . '/./utils/menu.php';
     require_once __DIR__ . '/./config/bootstrap.php';
+    session_start();
+    if (!isset($_SESSION['name'])) {
+        header('Location: /'); 
+        exit;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -1,6 +1,9 @@
 modalBack = document.getElementsByClassName("modal");
 
 $(document).ready(function () {
+    listProjects();
+    listPositions();
+
    $(document).on('click', '.modal', function(e){
     if(e.target == this){
         $(this).css("display", "none");
@@ -22,8 +25,6 @@ $(document).ready(function () {
         $('.bodyDelete-' + modalId).css('display', 'block');
         $('.bodyReset-' + modalId).css('display', 'none');
     });
-
-
     
     $('.tab-btn').click(function() {
     var tabId = $(this).data('tab');
@@ -34,6 +35,13 @@ $(document).ready(function () {
     // Adiciona ativo no botão clicado e no conteúdo correspondente
     $(this).addClass('active');
         $('.tab-content[data-tab="' + tabId + '"]').addClass('active');
+    });
+
+    $(document).on('click', '.buttonsFormWorker button', function(e) {
+        if ($(this).text().trim().toUpperCase() === 'CANCELAR') {
+            e.preventDefault();
+            $(this).closest('.modal').hide();
+        }
     });
 
     $('input[name="cpf"]').on('input', function() {
@@ -65,7 +73,7 @@ document.querySelector('.tab-btn[data-tab="2"]').addEventListener('click', funct
                     <form class="formNewWorker" method="POST" action="">
                         <div class="optNewWorker">
                             <label>Projeto</label>
-                            <select class="optNewWorker" name="nameProject" required>
+                            <select class="optNewWorker selectProject" name="nameProject" required>
                                 <option value="">Selecione</option>
                                 <!-- Aqui pode colocar via backend ou via JS -->
                             </select>
@@ -73,6 +81,7 @@ document.querySelector('.tab-btn[data-tab="2"]').addEventListener('click', funct
                     </form>
                     ${html}
                 `;
+                listProjects();
             } else {
                 console.error('Tab content não encontrado!');
             }
@@ -84,25 +93,51 @@ document.querySelector('.tab-btn[data-tab="3"]').addEventListener('click', funct
     listProjects();
     listPositions();
 });
-
 function listProjects() {
     fetch('/actions/GenericAction.php?action=listProjects')
         .then(res => res.json())
         .then(data => {
-            const container = document.querySelector('.list-projects');
-            container.innerHTML = ''; // Limpa antes
-            data.data.forEach(project => {
-                container.innerHTML += `
-                    <div class="item">
-                        <span>${project.nameProject} - ${project.timeProject}</span>
-                        <form class="form-delete">
-                            <input type="hidden" name="form_type" value="deleteProject">
-                            <input type="hidden" name="idProject" value="${project.idProject}">
-                            <button type="submit" class="btn-delete" data-type="project" data-id="${project.idProject}">Deletar</button>
-                        </form>
-                    </div>
-                `;
-            });
+            // 1) Atualiza .list-projects se existir
+            const listContainer = document.querySelector('.list-projects');
+            if (listContainer) {
+                listContainer.innerHTML = ''; // Limpa
+
+                data.data.forEach(project => {
+                    listContainer.innerHTML += `
+                        <div class="item">
+                            <span>${project.nameProject} - ${project.timeProject}</span>
+                            <form class="form-delete">
+                                <input type="hidden" name="form_type" value="deleteProject">
+                                <input type="hidden" name="idProject" value="${project.idProject}">
+                                <button type="submit" class="btn-delete" data-type="project" data-id="${project.idProject}">Deletar</button>
+                            </form>
+                        </div>
+                    `;
+                });
+            }
+
+            // 2) Atualiza TODOS os selects .optNewWorker que EXISTEM
+            const selects = document.querySelectorAll('select.selectProject');
+            if (selects.length) {
+                selects.forEach(select => {
+                    // Limpa antes
+                    select.innerHTML = '';
+
+                    // Option padrão
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = 'Selecione';
+                    select.appendChild(defaultOption);
+
+                    // Preenche com os projetos
+                    data.data.forEach(project => {
+                        const option = document.createElement('option');
+                        option.value = project.idProject;
+                        option.textContent = project.nameProject;
+                        select.appendChild(option);
+                    });
+                });
+            }
         })
         .catch(err => console.error('Erro ao listar projetos:', err));
 }
@@ -111,8 +146,9 @@ function listPositions() {
     fetch('/actions/GenericAction.php?action=listPositions')
         .then(res => res.json())
         .then(data => {
+            // Atualiza a lista visual
             const container = document.querySelector('.list-positions');
-            container.innerHTML = ''; // Limpa antes
+            container.innerHTML = ''; 
             data.data.forEach(jobPosition => {
                 container.innerHTML += `
                     <div class="item">
@@ -125,6 +161,15 @@ function listPositions() {
                     </div>
                 `;
             });
+
+            // Atualiza o <select>
+            const select = document.querySelector('select[name="idJobPosition"]');
+            if (select) {
+                select.innerHTML = '<option value="">Selecione</option>';
+                data.data.forEach(jobPosition => {
+                    select.innerHTML += `<option value="${jobPosition.idJobPosition}">${jobPosition.namePosition}</option>`;
+                });
+            }
         })
         .catch(err => console.error('Erro ao listar cargos:', err));
 }

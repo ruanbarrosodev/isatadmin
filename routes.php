@@ -10,9 +10,11 @@ $uri = str_starts_with($uri, $base) ? substr($uri, strlen($base)) : $uri;
 
 $uri = trim($uri, '/');
 
+require_once __DIR__ . '/controllers/WorkerController.php';
+
 switch ($uri) {
     case '':
-        require 'login.html'; 
+        require 'login.php'; 
         break;
     case 'home':
         require './home.php';
@@ -40,6 +42,10 @@ switch ($uri) {
         break;
     case 'listaratendimentos':
         require 'pages/listaratendimentos.php';
+        break;
+    case 'logout':
+        $controllerWorker = new WorkerController();
+        $controllerWorker->logout();
         break;
     default:
         http_response_code(404);

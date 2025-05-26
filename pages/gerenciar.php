@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $_SESSION['name'] = 'Ruan';
     if (!isset($_SESSION['name'])) {
         header('Location: /'); 
         exit;
@@ -22,6 +21,8 @@
     require_once __DIR__ . '/../controllers/WorkerController.php';
     require_once __DIR__ . '/../controllers/GenericController.php';
     $response = null; 
+    $controllerWorker = new WorkerController();
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         if (isset($_POST['form_type'])) {
             switch ($_POST['form_type']) {
@@ -30,18 +31,26 @@
                     $response = $controller->register($_POST);
                 break;
                 case 'form2':
-                    $controller2 = new Controller2();
-                    $response2 = $controller2->handle($_POST);
+                    //$controller2 = new Controller2();
+                    //$response2 = $controller2->handle($_POST);
                     break;
             }
         }
-    }   
-    $controller = new WorkerController();
-    $workers = $controller->listWorker();
 
-    $controller = new GenericController(); 
-    $response = $controller->listProject();
-    $projects = $response['data'] ?? []; 
+        if (isset($_POST['delete'])) {
+            $idWorker = $_POST['idWorker'];
+            $response = $controllerWorker->deleteWorker($idWorker);
+        } elseif (isset($_POST['reset'])) {
+            $idWorker = $_POST['idWorker'];
+            $controllerWorker->resetPassword($idWorker);
+        }
+    }   
+   
+    $workers = $controllerWorker->listWorker();
+
+    $controllerGeneric = new GenericController(); 
+    $projectResponse = $controllerGeneric->listProject();
+    $projects = $projectResponse['data'] ?? []; 
     ?>
 </head>
 <body>
@@ -85,19 +94,17 @@
                             </div> -->
                             <div class="optNewWorker">
                                 <label>Cargos</label>
-                                <select class="optNewWorker" name="position" required>
+                                <select class="optNewWorker" name="idJobPosition" required>
                                     <option value="">Selecione</option>
-                                    <option value="Assistente Social">Assistente Social</option>
-                                    <option value="Psicologa">Psicologa</option>
-                                    <option value="Atendente">Atendente</option>
                                 </select>
                             </div>
                             <div class="optNewWorker">
                                 <label>Projeto</label>
-                                <select class="optNewWorker" name="idProject" required>
+                                <select class="optNewWorker selectProject" name="idProject" required>
                                     <option value="">Selecione</option>
                                     <?php if(!empty($projects)): ?>
                                         <?php foreach($projects as $project): ?>      
+
                                             <option value="<?=$project['idProject']?>"><?=$project['nameProject']?></option>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
@@ -114,13 +121,8 @@
                     <form class="formNewWorker" method="POST" action="">
                             <div class="optNewWorker">
                                 <label>Projeto</label>
-                                <select class="optNewWorker" name="nameProject" required>
+                                <select class="optNewWorker selectProject" name="nameProject" required>
                                     <option value="">Selecione</option>
-                                        <?php if(!empty($projects)): ?>
-                                            <?php foreach($projects as $project): ?>      
-                                                <option value="<?=$project['idProject']?>"><?=$project['nameProject']?></option>
-                                            <?php endforeach; ?>
-                                        <?php endif; ?>
                                 </select>
                             </div>
                             <!-- <div class="optNewWorker">
