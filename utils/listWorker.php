@@ -3,8 +3,11 @@
 require_once __DIR__ . '/../config/bootstrap.php'; 
 require_once __DIR__ . '/../controllers/WorkerController.php'; 
 
+
+$idProject = $_GET['idProject'] ?? null;
+
 $controller = new WorkerController();
-$workers = $controller->listWorker();
+$workers = $controller->listWorker($idProject);
 
 if (!empty($workers)): 
     foreach ($workers as $worker): ?>

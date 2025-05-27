@@ -42,20 +42,31 @@ class WorkerModel
         return $user ?: null;
     }
 
-    public function getAll(): array
+    public function getAll(int|null $idProject = null): array
     {
         $sql = "SELECT w.idWorker, w.name, w.cpf, pos.namePosition AS position, 
                     p.nameProject, p.timeProject
                 FROM Worker w
                 JOIN Project p ON w.Project_idProject = p.idProject
                 JOIN JobPosition pos ON w.JobPosition_idJobPosition = pos.idJobPosition 
-                WHERE w.name != 'Dev' AND w.name != 'Admin' AND w.active = 1
-                ORDER BY w.idWorker DESC
-                LIMIT 5";
+                WHERE w.name != 'Dev' AND w.name != 'Admin' AND w.active = 1";
 
-        $stmt = $this->pdo->query($sql);
+        $params = [];
+
+        if (!empty($idProject)) {
+            $sql .= " AND p.idProject = :idProject";
+            $params[':idProject'] = $idProject;
+        }
+
+        $sql .= " ORDER BY w.idWorker DESC";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+
 
     public function resetPassword($id): bool
     {

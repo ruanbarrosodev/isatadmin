@@ -61,9 +61,9 @@ class WorkerController
         return ['success' => true, 'message' => 'Login realizado com sucesso.', 'worker' => $user];
     }
 
-    public function listWorker(): array
+    public function listWorker($idProject = null): array
     {
-        return $this->model->getAll();
+        return $this->model->getAll($idProject);
     }
     public function resetPassword($id): array
     {

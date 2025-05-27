@@ -60,34 +60,58 @@ $(document).ready(function () {
 })
 //getWorkers
 document.querySelector('.tab-btn[data-tab="2"]').addEventListener('click', function() {
-    fetch('/utils/listWorker.php')
-        .then(res => {
-            if (!res.ok) throw new Error('Erro HTTP: ' + res.status);
-            return res.text();
-        })
-        .then(html => {
-            const container = document.querySelector('.tab-content[data-tab="2"]');
-            if (container) {
-                container.innerHTML = `
-                    <h3>Funcionários</h3>
-                    <form class="formNewWorker" method="POST" action="">
-                        <div class="optNewWorker">
-                            <label>Projeto</label>
-                            <select class="optNewWorker selectProject" name="nameProject" required>
-                                <option value="">Selecione</option>
-                                <!-- Aqui pode colocar via backend ou via JS -->
-                            </select>
-                        </div>
-                    </form>
-                    ${html}
-                `;
-                listProjects();
-            } else {
-                console.error('Tab content não encontrado!');
-            }
-        })
-        .catch(err => console.error('Erro ao carregar lista:', err));
+    const tabContent = document.querySelector('.tab-content[data-tab="2"]');
+
+    // Renderiza o form + select e a div onde vai entrar o resultado
+    tabContent.innerHTML = `
+        <h3>Funcionários</h3>
+        <form class="formNewWorker" method="POST" action="">
+            <div class="optNewWorker">
+                <label>Projeto</label>
+                <select class="optNewWorker selectProject" id="queryProject" name="idProject">
+                    <option value="">Todos</option>
+                    <!-- options inseridas por listProjects -->
+                </select>
+            </div>
+        </form>
+        <div class="worker-list"></div>
+    `;
+
+    listProjects(); // popula as options do select
+
+    const selectProject = tabContent.querySelector('#queryProject');
+    const workerListDiv = tabContent.querySelector('.worker-list');
+
+    function loadWorkers(idProject = '') {
+        const url = idProject ? `/utils/listWorker.php?idProject=${encodeURIComponent(idProject)}` : '/utils/listWorker.php';
+
+
+
+        fetch(url)
+            .then(res => {
+                if (!res.ok) throw new Error('Erro HTTP: ' + res.status);
+                return res.text();
+            })
+            .then(html => {
+                workerListDiv.innerHTML = html;
+            })
+            .catch(err => {
+                console.error('Erro ao carregar lista:', err);
+                workerListDiv.innerHTML = '<p>Erro ao carregar funcionários.</p>';
+            });
+    }
+
+    // Já carrega todos ao abrir a aba
+    loadWorkers();
+
+    // Quando trocar o select, filtra
+    selectProject.addEventListener('change', function() {
+        const idProject = this.value;
+        loadWorkers(idProject);
+    });
 });
+
+
 //More fetch req
 document.querySelector('.tab-btn[data-tab="3"]').addEventListener('click', function() {
     listProjects();

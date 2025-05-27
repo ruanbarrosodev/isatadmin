@@ -117,50 +117,25 @@
                         </form>
                     </div>    
                 </div>                    
-                <div class="tab-content" data-tab="2">
-                    <h3>Funcionários</h3>
-                    <form class="formNewWorker" method="POST" action="">
-                            <div class="optNewWorker">
-                                <label>Projeto</label>
-                                <select class="optNewWorker selectProject" name="nameProject" required>
-                                    <option value="">Selecione</option>
-                                </select>
-                            </div>
-                            <!-- <div class="optNewWorker">
-                                <input type="submit" value="Pesquisar">
-                            </div> -->
-                        </form>
-                        <?php /*if (!empty($workers)): ?>
-                            <?php foreach ($workers as $worker): ?>
-                                <div class="Worker">
-                                    <div class="optWorker"><?php echo htmlspecialchars($worker['name']); ?> | <?php echo htmlspecialchars($worker['position']); ?></div>
-                                    <div class="optWorker"><?php echo htmlspecialchars($worker['cpf']); ?></div>
-                                    <div class="optWorker"><?php echo htmlspecialchars($worker['nameProject']) ?> | <?php echo htmlspecialchars($worker['timeProject']) ?></div>
-                                    <form class="formWorkerOpt">
-                                        <div class="optWorker btnDeleteWorker" data-modal-id="<?php echo $worker['idWorker']; ?>">Deletar Funcionário</div>
-                                        <div class="optWorker btnChangePassword" data-modal-id="<?php echo $worker['idWorker']; ?>">Resetar senha</div>
-
-                                        <div class="modal modal-<?php echo $worker['idWorker']; ?>">
-                                            <div class="modalBody bodyDelete-<?php echo $worker['idWorker']; ?>">
-                                                <p>Você deseja deletar este funcionário "<?php echo htmlspecialchars($worker['name']); ?>"?</p>
-                                                <div class="buttonsFormWorker">
-                                                    <button>SIM</button>
-                                                    <button>CANCELAR</button>
-                                                </div>
-                                            </div>
-                                            <div class="modalBody bodyReset-<?php echo $worker['idWorker']; ?>">
-                                                <p>Você deseja resetar a senha deste funcionário "<?php echo htmlspecialchars($worker['name']); ?>"?</p>
-                                                <div class="buttonsFormWorker">
-                                                    <button>SIM</button>
-                                                    <button>CANCELAR</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+              <div class="tab-content" data-tab="2">
+                <h3>Funcionários</h3>
+                <form class="formNewWorker" method="POST" action="">
+                    <div class="optNewWorker">
+                        <label>Projeto</label>
+                        <select class="optNewWorker selectProject" name="idProject" required>
+                            <option value="">Selecione</option>
+                            <?php foreach($projects as $project): ?>      
+                                <option value="<?= $project['idProject'] ?>"><?= $project['nameProject'] ?></option>
                             <?php endforeach; ?>
-                        <?php endif;*/ ?>
+                        </select>
+                    </div>
+                </form>
+
+                <div id="workerList">
+                    <!-- Lista de workers será carregada aqui via AJAX -->
+                    <p>Selecione um projeto para ver os funcionários.</p>
                 </div>
+            </div>
             <div class="tab-content" data-tab="3">
                 <h3>Administração</h3>
                 <div class="cards-container">
