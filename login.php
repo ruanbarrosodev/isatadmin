@@ -35,10 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login ISAT - Bem vindo</title>
     <link type="text/css" rel="stylesheet" href="public/css/main.css">
     <link type="text/css" rel="stylesheet" href="public/css/login.css">
-
+    <link rel="icon" type="image/x-icon" href="/public/img/favicon.ico">
 </head>
 <body>
     <header>

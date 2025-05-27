@@ -10,13 +10,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISAT </title>
+    <title>ISAT - PAINEL</title>
     <link type="text/css" rel="stylesheet" href="/public/css/main.css">
     <link type="text/css" rel="stylesheet" href="/public/css/feedbacks.css">
+    <link rel="icon" type="image/x-icon" href="/public/img/favicon.ico">
     <?php 
-    require_once __DIR__ . '/../config/bootstrap.php';
-    require_once __DIR__ . '/../utils/menu.php';
-    require_once __DIR__ . '/../utils/nav.php';
+        require_once __DIR__ . '/../config/bootstrap.php';
+        require_once __DIR__ . '/../utils/menu.php';
+        require_once __DIR__ . '/../utils/nav.php';
     ?>
 </head>
 <body>

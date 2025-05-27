@@ -10,9 +10,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISAT </title>
+    <title>ISAT - PAINEL</title>
     <link type="text/css" rel="stylesheet" href="/public/css/main.css">
     <link type="text/css" rel="stylesheet" href="/public/css/gerenciar.css">
+    <link rel="icon" type="image/x-icon" href="/public/img/favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <?php 
     require_once __DIR__ . '/../config/bootstrap.php';
