@@ -6,11 +6,11 @@ function renderNav($nomeUsuario = 'Katiana Ferreira - Assistente Social', $cpfUs
             <a href="' . BASE_URL . 'home"><p>ISAT - INICIO</p></a>
 
             <div>
-                <span>' . htmlspecialchars($nomeUsuario) . '</span>
+                <span>' . htmlspecialchars($_SESSION['name']) . ' | '. htmlspecialchars($_SESSION['JobPosition']) . '</span>
             </div>
 
             <div>
-                <span>' . htmlspecialchars($cpfUsuario) . '</span>
+                <span>' . htmlspecialchars($_SESSION['cpf']) . '</span>
             </div>
 
             <button id="switchColor"><p>SWITCH</p></button>

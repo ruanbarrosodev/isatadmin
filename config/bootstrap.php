@@ -16,7 +16,5 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', $baseUrl);
 }
 
-
-
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();

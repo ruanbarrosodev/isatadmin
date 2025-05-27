@@ -10,6 +10,7 @@ $uri = str_starts_with($uri, $base) ? substr($uri, strlen($base)) : $uri;
 
 $uri = trim($uri, '/');
 
+require_once __DIR__ . '/config/bootstrap.php';
 require_once __DIR__ . '/controllers/WorkerController.php';
 
 switch ($uri) {

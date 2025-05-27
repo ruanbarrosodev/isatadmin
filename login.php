@@ -19,7 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         $response = $controllerWorker->authenticate($cpf, $password);
 
         if ($response['success']) {
-            $_SESSION['name'] = $response['user']['name'];
+            $_SESSION['name'] = $response['worker']['name'];
+            $_SESSION['idWorker'] = $response['worker']['idWorker'];
+            $_SESSION['cpf'] = $response['worker']['cpf'];
+            $_SESSION['JobPosition'] = $response['worker']['position'];
 
             header('Location: /home');
             exit;
@@ -35,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
     <title>Document</title>
     <link type="text/css" rel="stylesheet" href="public/css/main.css">
     <link type="text/css" rel="stylesheet" href="public/css/login.css">
+
 </head>
 <body>
     <header>
@@ -49,8 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
             <br>
             A Saúde Mental, segundo a OMS e o Ministério da Saúde, é definida como um estado de bem-estar que permite ao indivíduo utilizar suas habilidades, lidar com o estresse cotidiano, ser produtivo e contribuir para a comunidade. Sua definição envolve a interação de fatores biológicos, psicológicos e sociais, ou seja, possui características biopsicossociais.
             </p>
-            
-            <a href="home">HOME</a>
         </div>
         <div class="login">
             <h4>Entre no ISAT ADM</h4>
@@ -60,14 +62,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
                     <?= htmlspecialchars($response['message']) ?>
                 </div>
             <?php endif; ?>
-            <form> 
+            <form method="post"> 
+                <input type="hidden" name="form_type" value="login">
                 <div class="partForm">
                     <label>CPF: </label>
-                    <input type="text">
+                    <input name="cpf" id="cpf" type="text">
                 </div>
                 <div class="partForm">
                     <label>SENHA: </label>
-                    <input type="password">
+                    <input name="password" type="password">
                 </div>
                 <div class="partForm">
                     <input type="submit" value="ENTRAR">
@@ -76,5 +79,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         </div>
     </section>
 </body>
+<script>
+    /* document.getElementById('cpf').addEventListener('input', function (e) {
+        let value = e.target.value;
+        
+        value = value.replace(/\D/g, '');
+
+        value = value.substring(0, 11);
+
+        if (value.length > 9) {
+            value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+        } else if (value.length > 6) {
+            value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+        } else if (value.length > 3) {
+            value = value.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+        }
+
+        e.target.value = value;
+    }); */
+</script>
 <script src="public/js/main.js"></script>
 </html>

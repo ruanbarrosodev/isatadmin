@@ -1,7 +1,9 @@
 <?php 
     require_once __DIR__ . '/./utils/menu.php';
+    require_once __DIR__ . '/./utils/nav.php';
     require_once __DIR__ . '/./config/bootstrap.php';
     session_start();
+    //var_dump($_SESSION);
     if (!isset($_SESSION['name'])) {
         header('Location: /'); 
         exit;
@@ -17,15 +19,9 @@
     <link type="text/css" rel="stylesheet" href="public/css/main.css">
 </head>
 <body>
-<header> 
-    <nav>
-        <div><p>ISAT - INICIO</p></div>
-        <div><p>Katiana Ferreira - Assistente Social</p></div>
-        <div><p>032.232.415-05</p></div>
-        <div id="switchColor"><p>SWITCH</p></div>
-        <div><p>SAIR</p></div>
-    </nav>
-</header>
+    <?php 
+        renderNav("Katiana Ferreira", "041.525.525-04");
+    ?>
 <main>
     <section class="main-body">
         <?php 
