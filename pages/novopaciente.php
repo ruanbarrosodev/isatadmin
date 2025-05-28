@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['name'])) {
-        header('Location: /'); 
+        header('Location: /home'); 
         exit;
     }
 ?>
@@ -15,17 +15,18 @@
     <link type="text/css" rel="stylesheet" href="/public/css/feedbacks.css">
     <link rel="icon" type="image/x-icon" href="/public/img/favicon.ico">
     <?php 
-    require_once __DIR__ . '/../config/bootstrap.php';
-    require_once __DIR__ . '/../utils/menu.php';
-    require_once __DIR__ . '/../utils/nav.php';
-
+        require_once __DIR__ . '/../config/bootstrap.php';
+        require_once __DIR__ . '/../utils/menu.php';
+        require_once __DIR__ . '/../utils/nav.php';
     ?>
 </head>
 <body>
-    <?php 
-        renderNav("Katiana Ferreira", "041.525.525-04");
+<?php 
+    renderNav("Katiana Ferreira", "041.525.525-04");
     ?>
-<main>   
+<main>
+
+    
     <section class="main-body">
         <?php 
             renderMenu($menuItems, $currentUri);

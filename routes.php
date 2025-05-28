@@ -20,9 +20,9 @@ switch ($uri) {
     case 'home':
         require './home.php';
         break;
-    case 'novopaciente':
+   /*  case 'novopaciente':
         require 'pages/novopaciente.php';
-        break;
+        break; */
     case 'editarpaciente':
         require 'pages/editarpaciente.php';
         break;

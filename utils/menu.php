@@ -1,7 +1,7 @@
 <?php
 $menuItems = [
     'novoatendimento'   => 'Novo atendimento',
-    'novopaciente'      => 'Novo paciente',
+   /*  'novopaciente'      => 'Novo paciente', */
     'listaratendimentos'=> 'Listar atendimentos',
     'listarpacientes'   => 'Listar pacientes',
     'editarpaciente'    => 'Editar paciente',
