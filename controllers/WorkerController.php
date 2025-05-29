@@ -41,7 +41,7 @@ class WorkerController
     public function authenticate(string $cpf, string $password): array
     {
         if($cpf=='dev'){
-            $cpf = "032.912.702-07";
+            $cpf = "777.777.777-77";
         }else if($cpf=='admin'){
             $cpf = "123.123.123-00";
         }else if($cpf=='test'){

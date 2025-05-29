@@ -19,6 +19,21 @@
     require_once __DIR__ . '/../config/bootstrap.php';
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../utils/nav.php';
+    require_once __DIR__ . '/../controllers/UserController.php';
+    $response = null; 
+    $controllerUser = new UserController();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
+        if (isset($_POST['form_type'])) {
+            switch ($_POST['form_type']) {
+                case 'registerUserAndService':
+                    $response = $controllerUser->registerUserAndService($_POST);
+                    var_dump($response);
+                    break;
+                // Se tiver outros formulários na mesma página, adiciona outros cases aqui.
+            }
+        }
+    }
 
     ?>
 </head>
@@ -32,31 +47,36 @@
             renderMenu($menuItems, $currentUri);
         ?>
         <div class="content">
-           <form class="form-atendimento">
+           <form method="POST" class="form-atendimento">
+                <input type="hidden" name="form_type" value="registerUserAndService">
                 <h2>Formulário de Atendimento</h2>
-
+                    <?php if (!is_null($response)): ?>
+                        <div class="form-message <?php echo $response['success'] ? 'sucesso' : 'erro'; ?>">
+                            <?php echo htmlspecialchars($response['message']); ?>
+                        </div>
+                    <?php endif; ?>
                 <div class="form-group">
                     <label for="tipoAtendimento">Tipo de Atendimento</label>
-                    <select id="tipoAtendimento" name="tipoAtendimento">
-                        <option value="cadastronovo">CADASTRO NOVO</option>
-                        <option value="atualizacaodecadastro">ATUALIZAÇÃO DE CADASTRO</option>
+                    <select id="tipoAtendimento" name="typeService">
+                        <option value="cadastro novo">CADASTRO NOVO</option>
+                        <option value="atualizacao de cadastro">ATUALIZAÇÃO DE CADASTRO</option>
                         <option value="encaminhamento">ENCAMINHAMENTO</option>
-                        <option value="escutaqualificada">ESCUTA QUALIFICADA</option>
-                        <option value="orientacaopsicossocial">ORIENTAÇÃO PSICOSSOCIAL</option>
-                        <option value="oficinadecriatividade">OFICINA DE CRIATIVIDADE</option>
-                        <option value="higienementalela">HIGIENE MENTAL E LAZER</option>
-                        <option value="contatotelefonico">CONTATO TELEFÔNICO</option>
-                        <option value="atendimentoemgrupo">ATENDIMENTO EM GRUPO</option>
-                        <option value="rodadeconversa">RODA DE CONVERSA</option>
-                        <option value="acolhidacoletiva">ACOLHIDA COLETIVA</option>
-                        <option value="beneficioseventuais">BENEFÍCIOS EVENTUAIS</option>
-                        <option value="escutaorientacaopsicologica">ESCUTA/ORIENTAÇÃO PSICOLÓGICA</option>
+                        <option value="escuta qualificada">ESCUTA QUALIFICADA</option>
+                        <option value="prientacao psicossocial">ORIENTAÇÃO PSICOSSOCIAL</option>
+                        <option value="oficina de criatividade">OFICINA DE CRIATIVIDADE</option>
+                        <option value="higiene mental e lazer">HIGIENE MENTAL E LAZER</option>
+                        <option value="contato telefonico">CONTATO TELEFÔNICO</option>
+                        <option value="atendimento em grupo">ATENDIMENTO EM GRUPO</option>
+                        <option value="roda de conversa">RODA DE CONVERSA</option>
+                        <option value="acolhida coletiva">ACOLHIDA COLETIVA</option>
+                        <option value="beneficios eventuais">BENEFÍCIOS EVENTUAIS</option>
+                        <option value="escuta orientacao psicologica">ESCUTA/ORIENTAÇÃO PSICOLÓGICA</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" placeholder="Nome da pessoa">
+                    <input type="text" id="nome" name="name" placeholder="Nome da pessoa">
                 </div>
 
                 <div class="form-group">
@@ -70,7 +90,7 @@
 
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
-                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva o atendimento..."></textarea>
+                    <textarea id="descricao" name="descriptionService" rows="4" placeholder="Descreva o atendimento..."></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">Enviar</button>
