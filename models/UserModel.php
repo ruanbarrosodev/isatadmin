@@ -66,4 +66,12 @@ class UserModel
             return false;
         }
     }
+    public function getUsers(){
+        $sql = "SELECT * from User";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

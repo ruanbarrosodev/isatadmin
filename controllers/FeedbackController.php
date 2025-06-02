@@ -17,4 +17,17 @@ class FeedbackController
     {
         return $this->model->getAll();
     }
+    public function deleteFeedback(int $id): array
+    {
+    $success = $this->model->deleteFeedback($id);
+    return $success
+        ? [
+            'success' => true,
+            'message' => 'Feedback deletado com sucesso.'
+        ]
+        : [
+            'success' => false,
+            'message' => 'Erro ao deletar feedback.'
+        ];
+    } 
 }

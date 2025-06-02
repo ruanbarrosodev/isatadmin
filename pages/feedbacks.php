@@ -39,13 +39,12 @@
         ?>
         <div class="content">
             <div class="feedbacks">
-                <h4>Feedbacks</h4>
                 <?php if (empty($feedbacks)): ?>
                 <p>Nenhum feedback encontrado.</p>
             <?php else: ?>
                 <?php foreach ($feedbacks as $fb): ?>
                     <div class="feedback">
-                        <p><b>Nome: </b><?= htmlspecialchars($fb['name']) ?><span><?= date('d/m/Y', strtotime($fb['created_at'])) ?></span></p>
+                        <p><b>Nome: </b><?= htmlspecialchars($fb['name']) ?><span><a href="deletefeedback/<?=$fb['id']?>">🗑️</a><?= date('d/m/Y', strtotime($fb['created_at'])) ?></span></p>
                         <p><b>Email: </b><?= htmlspecialchars($fb['email']) ?></p>
                         <p><b>Contato: </b> <?= htmlspecialchars($fb['contact']) ?></p>
                         <p><b>Descrição: </b><?= nl2br(htmlspecialchars($fb['description'])) ?></p>

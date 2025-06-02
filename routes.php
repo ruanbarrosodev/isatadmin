@@ -12,6 +12,7 @@ $uri = trim($uri, '/');
 
 require_once __DIR__ . '/config/bootstrap.php';
 require_once __DIR__ . '/controllers/WorkerController.php';
+require_once __DIR__ . '/controllers/FeedbackController.php';
 
 switch ($uri) {
     case '':
@@ -47,6 +48,15 @@ switch ($uri) {
     case 'logout':
         $controllerWorker = new WorkerController();
         $controllerWorker->logout();
+        break;
+    case str_starts_with($uri, 'deletefeedback/'):
+        $parts = explode('/', $uri);
+        $id = (int)end($parts); 
+
+        $feedbackController = new FeedbackController("DB2");
+        $feedbackController->deleteFeedback($id);
+        echo $id;
+        header('Location: /feedbacks');
         break;
     default:
         http_response_code(404);

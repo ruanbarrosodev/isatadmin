@@ -27,8 +27,11 @@
         if (isset($_POST['form_type'])) {
             switch ($_POST['form_type']) {
                 case 'registerUserAndService':
+                    if($_POST['typeService']=='cadastro novo' || $_POST['typeService']=='atualizacao de cadastro'){
+                        $response = $controllerUser->registerUserAndService($_POST);
+                        header('Location: /editarpaciente');
+                    }
                     $response = $controllerUser->registerUserAndService($_POST);
-                    var_dump($response);
                     break;
                 // Se tiver outros formulários na mesma página, adiciona outros cases aqui.
             }

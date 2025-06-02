@@ -49,4 +49,7 @@ class UserController
             ? ['success' => true, 'message' => 'Usuário e serviço cadastrados com sucesso!']
             : ['success' => false, 'message' => 'Erro ao cadastrar.'];
     }
+    public function listUsers(){
+        return $this->model->getUsers();
+    }
 }

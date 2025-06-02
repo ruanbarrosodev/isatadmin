@@ -18,7 +18,10 @@
     require_once __DIR__ . '/../config/bootstrap.php';
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../utils/nav.php';
+    require_once __DIR__ . '/../controllers/ServiceController.php';
 
+    $serviceController = new ServiceController();
+    $listService = $serviceController->listService();
     ?>
 </head>
 <body>
@@ -32,6 +35,13 @@
         ?>
         <div class="content">
             <div>EXEMPLO</div>
+            <?php 
+
+                foreach($listService as $line){
+                    echo "<br>";
+                    var_dump($line);
+                }
+            ?>
         </div>
     </section>
 </main>

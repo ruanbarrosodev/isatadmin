@@ -18,6 +18,9 @@
     require_once __DIR__ . '/../config/bootstrap.php';
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../utils/nav.php';
+    require_once __DIR__ . '/../controllers/UserController.php';
+    $controller = new UserController();
+    $listUsers = $controller->listUsers();
 
     ?>
 </head>
@@ -31,7 +34,13 @@
             renderMenu($menuItems, $currentUri);
         ?>
         <div class="content">
-            <div>EXEMPLO</div>
+            <?php 
+            foreach($listUsers as $user){
+                echo "<br>";
+                echo "<br>";
+                var_dump($user);
+            }
+            ?>
         </div>
     </section>
 </main>
