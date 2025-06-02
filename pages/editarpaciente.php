@@ -36,41 +36,81 @@
                     <div class="form-step active">
                     <h2>Novo/Edição de Usuário</h2>
                     <div class="form-grid">
+                        <div class="form-title">
+                            <h3>Paciente</h3>
+                        </div>
                         <div class="form-group">
                         <label>Nome Completo</label>
-                        <input type="text">
+                        <input name="name" type="text">
                         </div>
                         <div class="form-group">
                         <label>RG</label>
-                        <input type="text">
+                        <input name="rg" type="text">
                         </div>
                         <div class="form-group">
                         <label>CPF</label>
-                        <input type="text">
+                        <input name="cpf" type="text">
                         </div>
                         <div class="form-group">
-                        <label>dsadas</label>
-                        <input type="text">
+                        <label>Ano de Nascimento</label>
+                        <input type="bornDate">
                         </div>
                         <div class="form-group">
-                        <label>Phone 2</label>
-                        <input type="text">
+                        <label>Cor</label>
+                        <input name="race" type="text">
                         </div>
                         <div class="form-group">
-                        <label>Email</label>
-                        <input type="email">
+                        <label>Status Civil</label>
+                        <input name="civil status" type="text">
                         </div>
                         <div class="form-group">
-                        <label>Home Value</label>
-                        <input type="text">
+                        <label>Educação</label>
+                        <input name="education" type="text">
                         </div>
                         <div class="form-group">
-                        <label>Current Loan Amount</label>
-                        <input type="text">
+                        <label>Nacionalidade</label>
+                        <input name="nationality" type="text">
                         </div>
                         <div class="form-group">
-                        <label>Employer</label>
-                        <input type="text">
+                        <label>Telefone</label>
+                        <input name="tel" type="situation">
+                        </div>
+                        <div class="form-group">
+                        <label>Religião</label>
+                        <input name="religion" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>SUS Cartão</label>
+                        <input name="suscard" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>NIS/PIS</label>
+                        <input name="nispis" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Profissão</label>
+                        <input name="profession" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Situação</label>
+                        <textarea></textarea>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-title">
+                            <h3>Endereço</h3>
+                        </div>
+                        <div class="form-group">
+                        <label>Bairro</label>
+                        <input name="district" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Rua</label>
+                        <input name="street" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Zona</label>
+                        <input name="zone" type="text">
                         </div>
                     </div>
                     <div class="form-nav">
@@ -80,43 +120,116 @@
                     </div>
 
                     <div class="form-step">
-                    <h2>Add a new lead - Step 2</h2>
+                    <h2>Saúde e bem estar</h2>
                     <div class="form-grid">
+                        <div class="form-title">
+                            <h3>Saúde</h3>
+                        </div>
                         <div class="form-group">
-                        <label>Address</label>
+                        <label>Suspeita</label>
+                        <input name="suspect" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Hospital</label>
+                        <input name="hospital" type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Doutor</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>ZIP</label>
+                        <label>Data Inicio Tratamento</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Income</label>
+                        <label>Data Retorno Tratamento</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>SSN</label>
+                        <label>Data Intervalo Tratamento</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>City</label>
+                        <label>Ultima Consulta</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>State</label>
+                        <label>Remedios</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Property Type</label>
+                        <label>Monitoramento Psiquico</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-title">
+                            <h3>Moradia</h3>
+                        </div>
+                        <div class="form-group">
+                        <label>Situação</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Current Loan Type</label>
+                        <label>Terreno</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Stage</label>
+                        <label>Quartos</label>
                         <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Higiene</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Construção</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Cobertura</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Piso</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Energia Elétrica</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Abastecimento de Água</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Coleta de lixo</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Sistema de Esgoto</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Pavimentação</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Iluminação Pública</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-title">
+                            <h3>Vulnerabilidade</h3>
+                        </div>
+                        <div class="form-group">
+                        <label>Forma de Acesso</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Situação</label>
+                        <input type="text">
+                        </div>
+                        <div class="form-group">
+                        <label>Campo Hidden</label>
+                        <textarea name="secrecy"></textarea>
                         </div>
                     </div>
                     <div class="form-nav">
@@ -126,42 +239,42 @@
                     </div>
 
                     <div class="form-step">
-                    <h2>Add a new lead - Step 3</h2>
+                    <h2>Parentes, Afiliados, etc</h2>
                     <div class="form-grid">
                         <div class="form-group">
-                        <label>Revenue</label>
+                        <label>Beneficios</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Refinance Expectation</label>
+                        <label>Despesas</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Current Rate</label>
+                        <label>Afiliados</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Credit Range</label>
+                        <label>Family</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Co-Borrower First Name</label>
+                        <label>NODESC</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Co-Borrower Last Name</label>
+                        <label>NODESC</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Closing Date</label>
+                        <label>NODESC</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>HOA Fee</label>
+                        <label>NODESC</label>
                         <input type="text">
                         </div>
                         <div class="form-group">
-                        <label>Description</label>
+                        <label>NODESC</label>
                         <textarea></textarea>
                         </div>
                     </div>

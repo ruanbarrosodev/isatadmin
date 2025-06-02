@@ -55,7 +55,6 @@ switch ($uri) {
 
         $feedbackController = new FeedbackController("DB2");
         $feedbackController->deleteFeedback($id);
-        echo $id;
         header('Location: /feedbacks');
         break;
     default:

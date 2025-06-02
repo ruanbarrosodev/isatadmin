@@ -16,7 +16,16 @@
   position: relative;
   overflow: hidden;
 }
+.form-title {
+    grid-column: 1 / -1;  /* Ocupa todas as colunas da grid */
+    margin-top: 10px;    /* Espaçamento pra respirar */
+}
 
+.form-title h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
 .form-step {
   display: none;
   animation: fadeIn 0.5s ease-in-out;
@@ -36,6 +45,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .form-group label {
