@@ -45,6 +45,9 @@ switch ($uri) {
     case 'listaratendimentos':
         require 'pages/listaratendimentos.php';
         break;
+    case 'adicionarconteudo':
+        require 'pages/adicionarconteudo.php';
+        break;
     case 'logout':
         $controllerWorker = new WorkerController();
         $controllerWorker->logout();

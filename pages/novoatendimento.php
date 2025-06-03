@@ -29,7 +29,7 @@
                 case 'registerUserAndService':
                     if($_POST['typeService']=='cadastro novo' || $_POST['typeService']=='atualizacao de cadastro'){
                         $response = $controllerUser->registerUserAndService($_POST);
-                        var_dump($response);
+                        //var_dump($response);
                         //header('Location: /editarpaciente');
                     }else{
                         $response = $controllerUser->registerUserAndService($_POST);

@@ -6,6 +6,7 @@ $menuItems = [
     'listarpacientes'   => 'Listar pacientes',
     'editarpaciente'    => 'Editar paciente',
     'filtragem'         => 'Filtragem',
+    'adicionarconteudo' => 'Administração',
     'feedbacks'         => 'Feedbacks',
     'gerenciar'         => 'Gerenciar',
 ];

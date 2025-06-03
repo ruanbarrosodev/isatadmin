@@ -253,67 +253,7 @@
 
                     <div class="form-step">
                     <h2>Afiliados, Beneficios, Despesas, Família</h2>
-                    <div class="main-multi">
-                        <!-- Seção de Benefícios -->
-                        <div class="form-section" id="beneficios">
-                            <div class="form-header">
-                                <h2>Benefícios</h2>
-                                <button type="button" class="add-btn" data-target="beneficios-form">Adicionar Benefício</button>
-                            </div>
-                            <div class="form-content" id="beneficios-form">
-                                <div class="form-multi">
-                                    <label for="beneficio-tipo">Tipo de Benefício</label>
-                                    <input type="text" id="beneficio-tipo" name="beneficio_tipo_temp" placeholder="Ex: Vale Alimentação">
-                                </div>
-                                <div class="form-multi">
-                                    <label for="beneficio-valor">Valor (R$)</label>
-                                    <input type="number" id="beneficio-valor" name="beneficio_valor_temp" placeholder="Ex: 150.00" step="0.01">
-                                </div>
-                                <button type="button" class="submit-btn" id="add-beneficio">Adicionar à Lista</button>
-                            </div>
-                            <div class="items-list" id="beneficios-list"></div>
-                        </div>
-
-                        <!-- Seção de Despesas -->
-                        <div class="form-section" id="despesas">
-                            <div class="form-header">
-                                <h2>Despesas</h2>
-                                <button type="button" class="add-btn" data-target="despesas-form">Adicionar Despesa</button>
-                            </div>
-                            <div class="form-content" id="despesas-form">
-                                <div class="form-multi">
-                                    <label for="despesa-descricao">Descrição</label>
-                                    <input type="text" id="despesa-descricao" name="despesa_descricao_temp" placeholder="Ex: Aluguel">
-                                </div>
-                                <div class="form-multi">
-                                    <label for="despesa-valor">Valor (R$)</label>
-                                    <input type="number" id="despesa-valor" name="despesa_valor_temp" placeholder="Ex: 1200.00" step="0.01">
-                                </div>
-                                <button type="button" class="submit-btn" id="add-despesa">Adicionar à Lista</button>
-                            </div>
-                            <div class="items-list" id="despesas-list"></div>
-                        </div>
-
-                        <!-- Seção de Afiliação -->
-                        <div class="form-section" id="afiliacao">
-                            <div class="form-header">
-                                <h2>Afiliação</h2>
-                                <button type="button" class="add-btn" data-target="afiliacao-form">Adicionar Afiliação</button>
-                            </div>
-                            <div class="form-content" id="afiliacao-form">
-                                <div class="form-multi">
-                                    <label for="afiliacao-entidade">Entidade</label>
-                                    <input type="text" id="afiliacao-entidade" name="afiliacao_entidade_temp" placeholder="Ex: Sindicato dos Trabalhadores">
-                                </div>
-                                <div class="form-multi">
-                                    <label for="afiliacao-data">Data de Início</label>
-                                    <input type="date" id="afiliacao-data" name="afiliacao_data_temp">
-                                </div>
-                                <button type="button" class="submit-btn" id="add-afiliacao">Adicionar à Lista</button>
-                            </div>
-                            <div class="items-list" id="afiliacao-list"></div>
-                        </div>
-                    </div>
+                    
                     <div class="form-nav">
                         <button type="button" class="prev">Back</button>
                         <button type="submit">Submit</button>

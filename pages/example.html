@@ -1,0 +1,307 @@
+<div class="main-multi">
+                        <!-- Seção de Benefícios -->
+                        <div class="form-section" id="beneficios">
+                            <div class="form-header">
+                                <h2>Benefícios</h2>
+                                <button type="button" class="add-btn" data-target="beneficios-form">Adicionar Benefício</button>
+                            </div>
+                            <div class="form-content" id="beneficios-form">
+                                <div class="form-multi">
+                                    <label for="beneficio-tipo">Tipo de Benefício</label>
+                                    <input type="text" id="beneficio-tipo" name="beneficio_tipo_temp" placeholder="Ex: Vale Alimentação">
+                                </div>
+                                <div class="form-multi">
+                                    <label for="beneficio-valor">Valor (R$)</label>
+                                    <input type="number" id="beneficio-valor" name="beneficio_valor_temp" placeholder="Ex: 150.00" step="0.01">
+                                </div>
+                                <button type="button" class="submit-btn" id="add-beneficio">Adicionar à Lista</button>
+                            </div>
+                            <div class="items-list" id="beneficios-list"></div>
+                        </div>
+
+                        <!-- Seção de Despesas -->
+                        <div class="form-section" id="despesas">
+                            <div class="form-header">
+                                <h2>Despesas</h2>
+                                <button type="button" class="add-btn" data-target="despesas-form">Adicionar Despesa</button>
+                            </div>
+                            <div class="form-content" id="despesas-form">
+                                <div class="form-multi">
+                                    <label for="despesa-descricao">Descrição</label>
+                                    <input type="text" id="despesa-descricao" name="despesa_descricao_temp" placeholder="Ex: Aluguel">
+                                </div>
+                                <div class="form-multi">
+                                    <label for="despesa-valor">Valor (R$)</label>
+                                    <input type="number" id="despesa-valor" name="despesa_valor_temp" placeholder="Ex: 1200.00" step="0.01">
+                                </div>
+                                <button type="button" class="submit-btn" id="add-despesa">Adicionar à Lista</button>
+                            </div>
+                            <div class="items-list" id="despesas-list"></div>
+                        </div>
+
+                        <!-- Seção de Afiliação -->
+                        <div class="form-section" id="afiliacao">
+                            <div class="form-header">
+                                <h2>Afiliação</h2>
+                                <button type="button" class="add-btn" data-target="afiliacao-form">Adicionar Afiliação</button>
+                            </div>
+                            <div class="form-content" id="afiliacao-form">
+                                <div class="form-multi">
+                                    <label for="afiliacao-entidade">Entidade</label>
+                                    <input type="text" id="afiliacao-entidade" name="afiliacao_entidade_temp" placeholder="Ex: Sindicato dos Trabalhadores">
+                                </div>
+                                <div class="form-multi">
+                                    <label for="afiliacao-data">Data de Início</label>
+                                    <input type="date" id="afiliacao-data" name="afiliacao_data_temp">
+                                </div>
+                                <button type="button" class="submit-btn" id="add-afiliacao">Adicionar à Lista</button>
+                            </div>
+                            <div class="items-list" id="afiliacao-list"></div>
+                        </div>
+                    </div>
+                    <style>
+                        
+/*dwq,dqw*/
+.main-multi {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.main-multi .form-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.main-multi .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.main-multi .form-header h2 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.main-multi .add-btn {
+    background: white;
+    color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-multi .add-btn:hover {
+    background: #e0e0e0;
+}
+
+.main-multi .form-content {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.main-multi .form-content.active {
+    max-height: 500px;
+    padding: 20px;
+    transition: max-height 0.5s ease-in;
+}
+
+.main-multi .form-multi {
+    margin-bottom: 15px;
+}
+
+.main-multi .form-multi label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+.main-multi .form-multi input, 
+.main-multi .form-multi select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.main-multi .submit-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.main-multi .submit-btn:hover {
+    background: #45a049;
+}
+
+.main-multi .items-list {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.main-multi .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.main-multi .item-info {
+    flex: 1;
+}
+
+.main-multi .delete-btn {
+    background: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.main-multi .delete-btn:hover {
+    background: #d32f2f;
+}
+
+                    </style>
+                    <SCRIPT>
+                        
+$(document).ready(function() {
+    // Contadores para gerar names únicos (ex: beneficio_tipo[0], beneficio_tipo[1])
+    let countBeneficios = 0;
+    let countDespesas = 0;
+    let countAfiliacoes = 0;
+
+    // Botão "Adicionar" (abre o form)
+    $(".add-btn").click(function() {
+        const target = $(this).data("target");
+        $("#" + target).toggleClass("active");
+    });
+    
+    // Adicionar Benefício
+    $("#add-beneficio").click(function() {
+        const tipo = $("#beneficio-tipo").val();
+        const valor = $("#beneficio-valor").val();
+        
+        if (!tipo || !valor) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+        
+        // Adiciona inputs hidden ao form principal
+        const hiddenInputs = `
+            <input type="hidden" name="beneficio_tipo[${countBeneficios}]" value="${tipo}">
+            <input type="hidden" name="beneficio_valor[${countBeneficios}]" value="${valor}">
+        `;
+        
+        // Adiciona o item visível na lista
+        const itemHtml = `
+            <div class="item" data-index="${countBeneficios}">
+                <div class="item-info">
+                    <strong>${tipo}</strong>: R$ ${parseFloat(valor).toFixed(2)}
+                </div>
+                <button type="button" class="delete-btn">Excluir</button>
+                ${hiddenInputs}
+            </div>
+        `;
+        
+        $("#beneficios-list").append(itemHtml);
+        $("#beneficio-tipo, #beneficio-valor").val("");
+        $("#beneficios-form").removeClass("active");
+        countBeneficios++;
+    });
+    
+    // Adicionar Despesa (lógica similar)
+    $("#add-despesa").click(function() {
+        const descricao = $("#despesa-descricao").val();
+        const valor = $("#despesa-valor").val();
+        
+        if (!descricao || !valor) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+        
+        const hiddenInputs = `
+            <input type="hidden" name="despesa_descricao[${countDespesas}]" value="${descricao}">
+            <input type="hidden" name="despesa_valor[${countDespesas}]" value="${valor}">
+        `;
+        
+        const itemHtml = `
+            <div class="item" data-index="${countDespesas}">
+                <div class="item-info">
+                    <strong>${descricao}</strong>: R$ ${parseFloat(valor).toFixed(2)}
+                </div>
+                <button type="button" class="delete-btn">Excluir</button>
+                ${hiddenInputs}
+            </div>
+        `;
+        
+        $("#despesas-list").append(itemHtml);
+        $("#despesa-descricao, #despesa-valor").val("");
+        $("#despesas-form").removeClass("active");
+        countDespesas++;
+    });
+    
+    // Adicionar Afiliação
+    $("#add-afiliacao").click(function() {
+        const entidade = $("#afiliacao-entidade").val();
+        const data = $("#afiliacao-data").val();
+        
+        if (!entidade || !data) {
+            alert("Preencha todos os campos!");
+            return;
+        }
+        
+        const hiddenInputs = `
+            <input type="hidden" name="afiliacao_entidade[${countAfiliacoes}]" value="${entidade}">
+            <input type="hidden" name="afiliacao_data[${countAfiliacoes}]" value="${data}">
+        `;
+        
+        const itemHtml = `
+            <div class="item" data-index="${countAfiliacoes}">
+                <div class="item-info">
+                    <strong>${entidade}</strong> (desde ${data})
+                </div>
+                <button type="button" class="delete-btn">Excluir</button>
+                ${hiddenInputs}
+            </div>
+        `;
+        
+        $("#afiliacao-list").append(itemHtml);
+        $("#afiliacao-entidade, #afiliacao-data").val("");
+        $("#afiliacao-form").removeClass("active");
+        countAfiliacoes++;
+    });
+    
+    // Excluir item (remove tanto o visual quanto os inputs hidden)
+    $(document).on("click", ".delete-btn", function() {
+        $(this).closest(".item").remove();
+    });
+});
+
+                    </SCRIPT>
