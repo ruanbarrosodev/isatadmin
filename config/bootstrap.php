@@ -15,6 +15,10 @@ if (!defined('BASE_URL')) {
     
     define('BASE_URL', $baseUrl);
 }
+ini_set('log_errors', 1);
+ini_set('display_errors', 1);
+ini_set('error_log', __DIR__ . '/php_error.log');
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();

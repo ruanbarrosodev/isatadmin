@@ -56,6 +56,171 @@ class UserModel
                 ':description' => $descriptionService,
                 ':userId' => $userId
             ]);
+            // Prepara as variáveis padrão com valores vazios
+            $defaultData = [
+                'district' => '',
+                'street' => '',
+                'zone' => '',
+                'housingSituation' => '',
+                'land' => '',
+                'rooms' => '',
+                'hygiene' => '',
+                'construction' => '',
+                'roof' => '',
+                'floor' => '',
+                'energy' => '',
+                'water' => '',
+                'trash' => '',
+                'sewage' => '',
+                'paving' => '',
+                'publiclight' => '',
+                'suspect' => '',
+                'hospital' => '',
+                'doctor' => '',
+                'startDateTreatment' => '',
+                'intervalDoctor' => '',
+                'returnDateTreatment' => '',
+                'lastConsult' => '',
+                'medicines' => '',
+                'monitoringPsycho' => '',
+                'accessForm' => '',
+                'vulnerabilitySituation' => '',
+                'secrecy' => ''
+            ];
+
+            // Extrai as variáveis automaticamente
+            extract($defaultData);
+            // Inserir na tabela Address
+                $sqlAddress = "INSERT INTO Address (
+                                district,
+                                street,
+                                zone,
+                                User_idUser
+                            ) VALUES (
+                                :district,
+                                :street,
+                                :zone,
+                                :userId
+                            )";
+
+                $stmtAddress = $this->pdo->prepare($sqlAddress);
+                $stmtAddress->execute([
+                    ':district' => $district,
+                    ':street' => $street,
+                    ':zone' => $zone,
+                    ':userId' => $userId
+                ]);
+
+                // Inserir na tabela Housing
+                $sqlHousing = "INSERT INTO Housing (
+                                situation,
+                                land,
+                                rooms,
+                                hygiene,
+                                construction,
+                                roof,
+                                floor,
+                                energy,
+                                water,
+                                trash,
+                                sewage,
+                                paving,
+                                publiclight,
+                                User_idUser
+                            ) VALUES (
+                                :situation,
+                                :land,
+                                :rooms,
+                                :hygiene,
+                                :construction,
+                                :roof,
+                                :floor,
+                                :energy,
+                                :water,
+                                :trash,
+                                :sewage,
+                                :paving,
+                                :publiclight,
+                                :userId
+                            )";
+
+                    $stmtHousing = $this->pdo->prepare($sqlHousing);
+                    $stmtHousing->execute([
+                        ':situation' => $housingSituation,
+                        ':land' => $land,
+                        ':rooms' => $rooms,
+                        ':hygiene' => $hygiene,
+                        ':construction' => $construction,
+                        ':roof' => $roof,
+                        ':floor' => $floor,
+                        ':energy' => $energy,
+                        ':water' => $water,
+                        ':trash' => $trash,
+                        ':sewage' => $sewage,
+                        ':paving' => $paving,
+                        ':publiclight' => $publiclight,
+                        ':userId' => $userId
+                    ]);
+
+                    // Inserir na tabela Health
+                    $sqlHealth = "INSERT INTO Health (
+                            suspect,
+                            hospital,
+                            doctor,
+                            startDateTreatment,
+                            intervalDoctor,
+                            returnDateTreatment,
+                            lastConsult,
+                            medicines,
+                            monitoringPsycho,
+                            User_idUser
+                        ) VALUES (
+                            :suspect,
+                            :hospital,
+                            :doctor,
+                            :startDateTreatment,
+                            :intervalDoctor,
+                            :returnDateTreatment,
+                            :lastConsult,
+                            :medicines,
+                            :monitoringPsycho,
+                            :userId
+                        )";
+
+                    $stmtHealth = $this->pdo->prepare($sqlHealth);
+                    $stmtHealth->execute([
+                        ':suspect' => $suspect,
+                        ':hospital' => $hospital,
+                        ':doctor' => $doctor,
+                        ':startDateTreatment' => $startDateTreatment,
+                        ':intervalDoctor' => $intervalDoctor,
+                        ':returnDateTreatment' => $returnDateTreatment,
+                        ':lastConsult' => $lastConsult,
+                        ':medicines' => $medicines,
+                        ':monitoringPsycho' => $monitoringPsycho,
+                        ':userId' => $userId
+                    ]);
+
+                    // Inserir na tabela Vulnerability
+                    $sqlVulnerability = "INSERT INTO Vulnerability (
+                            accessForm,
+                            situation,
+                            secrecy,
+                            User_idUser
+                        ) VALUES (
+                            :accessForm,
+                            :situation,
+                            :secrecy,
+                            :userId
+                        )";
+
+                    $stmtVulnerability = $this->pdo->prepare($sqlVulnerability);
+                    $stmtVulnerability->execute([
+                        ':accessForm' => $accessForm,
+                        ':situation' => $vulnerabilitySituation,
+                        ':secrecy' => $secrecy,
+                        ':userId' => $userId
+                    ]);
 
             $this->pdo->commit();
             return true;
