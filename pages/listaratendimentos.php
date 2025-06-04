@@ -46,5 +46,5 @@
     </section>
 </main>
 </body>
-<script src="public/js/main.js"></script>
+<script src="/public/js/main.js"></script>
 </html>

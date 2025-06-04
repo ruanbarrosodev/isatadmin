@@ -52,4 +52,15 @@ class UserController
     public function listUsers(){
         return $this->model->getUsers();
     }
+    public function findUserIdByCpf(string $cpf): array
+    {
+        $id = $this->model->getUserIdByCpf($cpf);
+
+        if ($id) {
+            return ['success' => true, 'idUser' => $id];
+        } else {
+            return ['success' => false, 'message' => 'Usuário não encontrado.'];
+        }
+    }
+
 }

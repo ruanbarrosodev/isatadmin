@@ -4,6 +4,12 @@
         header('Location: /'); 
         exit;
     }
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $base = '/isatadmin/';
+    $uri = str_starts_with($uri, $base) ? substr($uri, strlen($base)) : $uri;
+    $uri = trim($uri, '/');
+    $parts = explode('/', $uri);
+    $idUser = (int)end($parts); 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,14 +25,25 @@
     require_once __DIR__ . '/../config/bootstrap.php';
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../utils/nav.php';
+    require_once __DIR__ . '/../controllers/UserController.php';
 
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
         if (isset($_POST['form_type'])) {
             switch ($_POST['form_type']) {
                 case 'registerUser':
                     var_dump($_POST);
                     break;
-                // Se tiver outros formulários na mesma página, adiciona outros cases aqui.
+                case 'getIdByCPF':
+                    $controller = new UserController();
+                    $response = $controller->findUserIdByCpf($_POST['cpf']);
+                    if($response['success']==true){
+                        $idUser = $response['idUser'];
+                        header("Location: editarpaciente/".$idUser);
+                    }else{
+                        $errocpf = $response['message'];
+                    }
+                    break;
             }
         }
     }
@@ -42,8 +59,12 @@
         <?php 
             renderMenu($menuItems, $currentUri);
         ?>
+
         <div class="content">
             <div class="container">
+                <?php 
+                    if(!empty($idUser)){
+                ?>
                 <form action="" method="post" id="multi-step-form">
                     <input type="hidden" name="form_type" value="registerUser">
                     <div class="form-step active">
@@ -260,11 +281,86 @@
                     </div>
                     </div>
                 </form>
+                <?php 
+                }else{ 
+                ?>
+                <div id="cpfModal" class="modal-overlay">
+                    <div class="modal-content">
+                        <h2>Inserir CPF</h2>
+                        <form method="POST" action="">
+                        <input type="hidden" value="getIdByCPF" name="form_type">
+                        <input type="text" name="cpf" placeholder="Digite o CPF" required>
+                        <button type="submit">Buscar</button>
+
+                        <?php if (isset($errocpf)): ?>
+                            <p class="error-message"><?= htmlspecialchars($errocpf) ?></p>
+                        <?php endif; ?>
+                        </form>
+                    </div>
+                </div>
+                <style>
+                    .modal-overlay {
+                    position: fixed;
+                    top: 0; left: 0;
+                    width: 100vw; height: 100vh;
+                    background-color: rgba(0, 0, 0, 0.6); /* fundo escuro semi-transparente */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    }
+
+                    .modal-content {
+                    background: #fff;
+                    padding: 2rem;
+                    border-radius: 1rem;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    width: 90%;
+                    max-width: 400px;
+                    text-align: center;
+                    }
+
+                    .modal-content h2 {
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                    }
+
+                    .modal-content input {
+                    width: 100%;
+                    padding: 0.75rem;
+                    margin: 0.5rem 0;
+                    border: 1px solid #ccc;
+                    border-radius: 0.5rem;
+                    font-size: 1rem;
+                    }
+
+                    .modal-content button {
+                    background: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 0.5rem;
+                    cursor: pointer;
+                    font-size: 1rem;
+                    transition: background 0.3s;
+                    }
+
+                    .modal-content button:hover {
+                    background: #45a049;
+                    }
+
+                    .error-message {
+                    margin-top: 0.5rem;
+                    color: #e74c3c;
+                    font-size: 0.9rem;
+                    }
+                </style>
+                <?php } ?>
             </div>
         </div>
     </section>
 </main>
+<script src="/public/js/editarpaciente.js"></script>
+<script src="/public/js/main.js"></script>
 </body>
-<script src="public/js/editarpaciente.js"></script>
-<script src="public/js/main.js"></script>
 </html>

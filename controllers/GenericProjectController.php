@@ -2,7 +2,7 @@
 
 use Isatadmin\Database;
 
-class GenericModel
+class GenericProjectModel
 {
     private PDO $pdo;
 
@@ -53,14 +53,14 @@ class GenericModel
     }
 }
 
-class GenericController
+class GenericProjectController
 {
     private $model;
 
     public function __construct(string $dbName = 'DB1')
     {
         $pdo = Database::getInstance($dbName)->getConnection();
-        $this->model = new GenericModel($pdo);
+        $this->model = new GenericProjectModel($pdo);
     }
 
     public function listProject(): array

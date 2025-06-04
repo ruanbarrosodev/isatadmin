@@ -239,4 +239,17 @@ class UserModel
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
+    public function getUserIdByCpf(string $cpf): ?int
+    {
+        $sql = "SELECT idUser FROM User WHERE cpf = :cpf LIMIT 1";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([':cpf' => $cpf]);
+
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $result ? (int)$result['idUser'] : null;
+    }
+
 }

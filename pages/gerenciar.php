@@ -20,7 +20,7 @@
     require_once __DIR__ . '/../utils/menu.php';
     require_once __DIR__ . '/../utils/nav.php';
     require_once __DIR__ . '/../controllers/WorkerController.php';
-    require_once __DIR__ . '/../controllers/GenericController.php';
+    require_once __DIR__ . '/../controllers/GenericProjectController.php';
     $response = null; 
     $controllerWorker = new WorkerController();
 
@@ -49,7 +49,7 @@
    
     $workers = $controllerWorker->listWorker();
 
-    $controllerGeneric = new GenericController(); 
+    $controllerGeneric = new GenericProjectController(); 
     $projectResponse = $controllerGeneric->listProject();
     $projects = $projectResponse['data'] ?? []; 
     ?>

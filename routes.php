@@ -27,6 +27,11 @@ switch ($uri) {
     case 'editarpaciente':
         require 'pages/editarpaciente.php';
         break;
+    case str_starts_with($uri, 'editarpaciente/'):
+        $parts = explode('/', $uri);
+        $id = (int)end($parts); 
+        require 'pages/editarpaciente.php';
+        break;
     case 'novoatendimento':
         require 'pages/novoatendimento.php';
         break;
