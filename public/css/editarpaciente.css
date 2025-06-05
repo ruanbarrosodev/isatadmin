@@ -79,6 +79,115 @@ button {
 button:hover {
   background: #2980b9;
 }
+.modal-content {
+    position: relative; /* Importante pra o close ficar dentro */
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;   /* Ajusta a distância do topo */
+    right: 10px; /* Ajusta a distância da direita */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #e74c3c;
+}
+
+
+.form-group {
+  margin: 1rem 0;
+}
+
+#part1-list, #part2-list, #family-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f1f1f1;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.list-item input[type="text"] {
+  padding: 0.25rem;
+}
+
+.remove-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.big-button {
+  padding: 1rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  position: relative;
+  width: 500px;
+  max-width: 90%;
+}
+
+.close-modal-2 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+  font-size: 1rem;
+}
+.modal-content .form-group input,
+.modal-content .form-group select {
+  margin-bottom: 5px;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateX(50px); }
   to { opacity: 1; transform: translateX(0); }
